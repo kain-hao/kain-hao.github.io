@@ -1,0 +1,572 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://www.kainhao.site</id>
+    <title>KainHao的蓼苇岛</title>
+    <updated>2023-01-18T03:38:28.678Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://www.kainhao.site"/>
+    <link rel="self" href="https://www.kainhao.site/atom.xml"/>
+    <subtitle>每一个不曾起舞的日子，都是对生命的辜负。</subtitle>
+    <logo>https://www.kainhao.site/images/avatar.png</logo>
+    <icon>https://www.kainhao.site/favicon.ico</icon>
+    <rights>All rights reserved 2023, KainHao的蓼苇岛</rights>
+    <entry>
+        <title type="html"><![CDATA[简明TCP/IP(一): 网络协议巡礼]]></title>
+        <id>https://www.kainhao.site/concise-tcp-ip-i/</id>
+        <link href="https://www.kainhao.site/concise-tcp-ip-i/">
+        </link>
+        <updated>2023-01-18T03:08:07.000Z</updated>
+        <summary type="html"><![CDATA[<blockquote>
+<p>互联网成了人类发明的最强大的扩音器. 它给人微言轻无人理睬的小人物提供了可以向全球发言的话筒. 其用以鼓励和推动多种观点和对话的方法是传统的单向大众媒体所无法做到的.</p>
+</blockquote>
+]]></summary>
+        <content type="html"><![CDATA[<blockquote>
+<p>互联网成了人类发明的最强大的扩音器. 它给人微言轻无人理睬的小人物提供了可以向全球发言的话筒. 其用以鼓励和推动多种观点和对话的方法是传统的单向大众媒体所无法做到的.</p>
+</blockquote>
+<!-- more -->
+<blockquote>
+<p>--Vint Cerf, 2002.</p>
+</blockquote>
+<hr>
+<h1 id="1-arpanet与ncp-none-of-us-is-as-smart-as-all-of-us">.1 ARPAnet与NCP: &quot;None of us is as smart as all of us&quot;</h1>
+<blockquote>
+<p>回想起来, 人类历史上最大、最复杂的通讯工具的诞生之路本可以顺畅一些的. 遗憾的是, 无论是计划的指导者或是参与者都没有意识到他们所做的事业日后将会如何影响整个人类社会.</p>
+</blockquote>
+<p>在可操作计算机(Operational Computers)发明约15年后, 随着计算机的不断发展, 人们开始考虑将它应用到数字计算以外的地方.(Licklider, 1960) 最先提出这项设想的利克莱德(J.C.R. Licklider)教授很快得到了实现他梦想的机会——1962年, 他被任命为美国国防部高级研究计划署(ARPA)信息处理办公室(IPTO)主任, 随着他的研究不断深入, 人们认识到一个能够将计算机互相连接的网络能够提供远超越单个系统能力的服务. 他还说服了他的继任者泰勒(R.W. Taylor)继续这方面的研究.</p>
+<p>由于当时一台终端机只能链接一台主机, 如果要使用不同的主机, 除了安装多台终端机别无他法. 随着ARPA资助的计算机项目不断增加, 泰勒的办公室大有被终端机湮没之势. 泰勒对此不厌其烦, 后来他回忆说:</p>
+<blockquote>
+<p>我想, 唔, 要怎么做实在是显而易见. 如果这里有三台终端机, 它们应该被合并成一台, 想链接哪里就接哪里.</p>
+</blockquote>
+<p>泰勒认识到, 凭借一台终端机使用远在四面八方的计算机主机还能极大便利研究人员之间的沟通. 20世纪60年代, 随着多用户计算机系统的问世, 人们马上就开始利用它彼此发送信息. 泰勒在《纽约时报》的采访中说:</p>
+<blockquote>
+<p>我对这场演变印象最深的是这三个系统如何导致了围绕他们的社团的形成. 过去素不相识的人现在使用同一个系统. 因为这个系统可以让你分享文件, 你就能发现某某人对某某题目感兴趣, 而且掌握一些相关的信息. 你可以给他发个电子邮件, 一下子就建立了新关系.</p>
+</blockquote>
+<p>然而当时的电子邮件系统只能允许在同一主机系统内收发邮件, 一台主机上的用户无法给另一台主机上的人发送消息. 为了解决这一难题<sup>1</sup>, 泰勒提出了一个实验, 试图使一个站点的用户能够远程访问另一个站点中的计算机.(Licklider, J.C.R., and R.W. Taylor. 1968.) 这一实验性的电脑网络被称作&quot;ARPAnet&quot;.</p>
+<p>泰勒等人为ARPAnet设计了一套详尽的计划, 并大胆地采用了分组交换(Packet Switching)这一在当时并不成熟的构想. 分组交换是指将数据分为若干个数据包(Packet), 在计算机之间不断转发从而到达目的地. 这样一来, 一台计算机就可以经由几个&quot;中转站&quot;同远处的另一台电脑交流而无需直接连接, 从而大大减少了所需要搭建的线路. 此外, 数据包还能随时选取不同的拓扑路径进行传输, 以响应网络拥塞和链路故障等.</p>
+<p>设计者们最初的想法是借由已建成的全国性交换电话网络, 即公共交换电话网(Public Switched Telephone Network, PSTN)来实现多台主机的互联, 然而当时的大多数语音工程师都对这一理论持怀疑态度, 贝尔实验室(The Bell Labs)的一些工程师甚至直言&quot;分组交换注定失败&quot;. 因此尽管ARPAnet使用电话线作为通信介质, 但却没能使用PSTN的交换基础设施.</p>
+<p>在1967年第一次计算机协会(ACM)操作系统原理研讨会上, 当时的IPTO项目经理劳伦斯·罗伯茨(Lawrence Roberts)提出了后来成为ARPAnet的分组交换网络的初始设计(Davies et al., 1967)并很快展开了招标工作. 最终博尔特·贝纳尼克-纽曼公司(Bolt Beranek and Newman, BBN)公司被选中制造一种特殊的接口盒, 称作接口信息处理机(Interface Message Processor, IMP). 到1969年, BBN公司制造出了四个碗柜大小的IMP, 其中的两个很快被安装在加利福尼亚大学洛杉矶分校的克莱因洛克网络度量中心(Leonard Kleinrock's Network Measurement Center, University of California, Los Angeles, UCLA LKNMC)和斯坦福研究所(Stanford Research Institute, SRI), 使用一台搭载了NLS(Online System)的计算机作为主机.</p>
+<p><img src="https://s-bj-2262-blog.oss.dogecdn.com/6294436826_b1f120d37b_b.jpg" alt="ARPAnet使用的其中一台IMP Source: By FastLizard 4, CC-BY-SA 2.0" loading="lazy"><br>
+<em>ARPAnet使用的其中一台IMP. Source: By FastLizard 4, CC BY-SA 2.0</em></p>
+<p><img src="https://s-bj-2262-blog.oss.dogecdn.com/The_SDS_Sigma-7.jpg" alt="UCLA在参与ARPAnet实验时使用的SDS Sigma-7计算机. Source: By FastLizard 4, CC-BY-SA 2.0" loading="lazy"><br>
+<em>UCLA在参与ARPAnet实验时使用的SDS Sigma-7计算机. Source: By FastLizard 4, CC BY-SA 2.0</em></p>
+<p>1969年10月29日, UCLA开始了通过ARPAnet远程连接SRI主机的实验. &quot;我们本该发个精彩难忘的消息.&quot;, 多年后, 克莱因洛克回忆道. 遗憾的是, 人类历史上第一条通过计算机网络发送的消息实在太普通了: log in(登录). 当日晚10:30分, UCLA的终端机成功在SRI的主机上登录, IMP达到了要求, ARPAnet就此建立.</p>
+<p><img src="https://s-bj-2262-blog.oss.dogecdn.com/The_IMP_Log.jpg" alt="UCLA IMP的工作记录, 图中展示的是ARPAnet上第一条消息的发送过程. Source: FastLizard4, CC-BY-SA 2.0" loading="lazy"><br>
+<em>UCLA IMP的工作记录, 图中展示的是ARPAnet上第一条消息的发送过程. Source: FastLizard4, CC BY-SA 2.0</em></p>
+<p>很快, 另外两台IMP被安装在了加州大学圣塔芭芭拉分校(University of California at Santa Barbara, UCSB)和犹他大学(University of Utah). 分组交换的优越性从此时就开始体现: UCLA和犹他大学的IMP并不直接连通, 但是从这两处发出的数据包仍然可以经由SRI或UCSB到达对方.</p>
+<p>为了标准化ARPAnet上的网络接口, 网络工作小组(Network Working Group, NWG)开始开发一种对称<sup>2</sup>的网络协议, 也就是后来的网络控制协议(Network Control Protocol, NCP). NCP于1970年正式投入使用, 并一直作为ARPAnet的标准执行到1983年. RFC这一行之有效的机制也随之出现, 直到现在仍在发挥重要作用.</p>
+<p>很快, ARPAnet上出现了诸如FTP和跨主机电子邮件(值得一提的是, 广为人知的<em>用户名@主机名</em>语法就是这时出现的)等应用. 从而为后来分组交换网络的蓬勃发展的出现奠定了基础. 到1975年ARPAnet宣布实验结束开始投入正式运行时, 已经有57台IMP被安装在各处, 其中一台甚至跨越大洋被安装在伦敦.</p>
+<h1 id="2-从tcpip到互联网-迈向标准化与全球化">.2 从TCP/IP到互联网: 迈向标准化与全球化</h1>
+<p>ARPAnet令人瞩目的成就使得各方开始正视分组交换结构的计算机网络. 1980年底时, 各个大学和公司等已经建立了超过80个分组交换网络. 每个网络都对应着一个活跃的社群, 讨论的内容从当地的餐馆到最新的科研成果无所不包. 然而有一点阻碍了这些网络的发展: 各个网络之间是异构的, 也就是说, 各个网络的基础设施、协议乃至通信介质和错误特性都不尽相同. 这也就使得各个网络之间难以相互连通.</p>
+<p>两名曾参加过ARPAnet实验的研究员——罗伯特·卡恩(Robert E. Kahn)和文特·瑟夫(Vint Surf)——早就预见了这种障碍. 早在1972年, 他们就认识到我们现在所说的&quot;开放架构原则(Open-architecture Principal)&quot;, 即任何单独的网络技术的选择都不是由特定的网络体系结构决定的, 而是可以由服务提供商自由选择, 并通过元级&quot;互联网体系结构&quot;与其他网络进行交互. 在这种思想的指导下, 他们开始开发一种旨在连通多个网络的协议, 也就是TCP/IP协议<sup>3</sup>. 读者可能会注意到, 上文的说法是&quot;连通多个网络&quot;, 这意味着与其说TCP/IP协议是对于各方网络的构建标准, 不如说它更像是一种沟通各方的工具.<sup>4</sup><br>
+这一原则在卡恩早期的论文中也有体现:&quot;每个不同的网络都必须独立存在, 任何网络都不需要在连接到互联网时进行任何内部更改.&quot;</p>
+<p>随着80年代局域网技术的突破和网络-操作系统的整合, ARPAnet和TCP/IP协议都做出了大量的调整(这一变化还直接催生了下文中提到的DNS、IGP/EGP等技术), 为日后全球互联网的建立做了大量的准备工作.</p>
+<p><img src="https://s-bj-2262-blog.oss.dogecdn.com/2041103802_8d57ac82ee_b.jpg" alt="Xerox Alto, 最早的几款个人计算机之一, 也是首款适配TCP/IP的个人计算机. Source: cmnit, CC BY-SA 2.0" loading="lazy"><br>
+<em>Xerox Alto, 最早的几款个人计算机之一, 也是首款适配TCP/IP并搭载以太网接口的个人计算机. Source: cmnit, CC BY-SA 2.0</em></p>
+<p>分组交换网络在几个大学中的应用让同行们眼馋不已. 在1975年之后, 各类高等学术网络就如雨后春笋般出现, 例如为磁聚变能研究人员建立的MFENet、高能物理学家的HEPNet, NASA的SPANet和更通用的CSNET等.</p>
+<p>显然, 这些网络都是为专门的学术领域而设计的. 这一情况直到1985年NSFNet明确宣布他们的网络是为服务整个高等学术界而生的才得以扭转. NSFNet借此获得了爆炸性的发展. 同年, 丹尼斯·詹宁斯(Dennis Jennings)接手了NSFNet项目, 并迅速做出了一个关键的决定: TCP/IP协议将成为NSFNet项目的强制性要求. 不久, 联邦机构又作出了多项改革NSFNet的决定, 其中要求NFSNet加大对非学术用户的基础设施的投资力度并鼓励竞争性骨干网线路的架设和使用. 这些政策使得NFS骨干网从一个实验性的路由设备转变为商业设施. 在它8年半的生命周期中，骨干网从6个56kbps链路的节点发展到21个45mbps链路的节点. 它见证了超过5万个网络节点的接入(其中约2.9万个在美国), 位置涵盖七大洲和外太空. 由于NSFNet项目的影响力和资金以及协议本身的优越性，到1990年ARPAnet最终退役时，TCP/IP协议已经取代或边缘化了全球大多数其他广域计算机网络协议, IP正在成为全球信息基础设施的承载服务.</p>
+<p><img src="https://s-bj-2262-blog.oss.dogecdn.com/NSFNET-backbone-T3_Update.png" alt="1992年的NFSNet 骨干网示意图. Source: Mikeanthony1965, CC BY-SA 4.0" loading="lazy"><br>
+<em>1992年的NFSNet 骨干网示意图. Source: Mikeanthony1965, CC BY-SA 4.0</em></p>
+<p>到90年代, 互联网逐渐被引入公司企业和一般家庭, 网络服务商随之出现. 同时, 基于互联网技术的新型应用不断涌现. 如今互联网已经成为事实上连通全世界的公共网络, TCP/IP也成为最为广泛应用的网络协议.</p>
+<h1 id="3-tcp与osisup5sup-再谈标准化">.3 TCP与OSI<sup>5</sup>: 再谈标准化</h1>
+<p>计算机网络刚兴起时, 通常只有采用同一家制造商生产的设备才能彼此通信. 例如, 同一家公司要么采用DECnet解决方案, 要么采用IBM解决方案, 而不能结合使用这两种方案. 70年代末, 为打破这种藩篱, 国际标准化组织(International Organization for Standardization, ISO)开发了开放系统互连(Open System Interconnection, OSI)协议群及其参考模型. 出于种种原因, OSI协议群未能广泛使用, 但其参考模型却作为网络设计原则的范例广为人知. 这种模型旨在以协议的形式指导厂商生产可互操作的网络设备和软件, 让不同厂商的网络能够协同工作.</p>
+<p><img src="https://s-bj-2262-blog.oss.dogecdn.com/Osi-model.png" alt="OSI参考模型. Translation: KainHao, Source: Dino.Korah, CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=5538589" loading="lazy"><br>
+<em>OSI参考模型结构示意. Source: Dino.Korah, Translation: KainHao, CC BY-SA 3.0.</em></p>
+<p>这样看来, OSI与TCP/IP的目的似乎是相似的. 然而使得TCP/IP没有重蹈OSI覆辙的决定性因素在于:</p>
+<p>第一, TCP/IP的标准化是开放的. 通常TCP/IP的标准是由互联网工程任务组(The Internet Engineering Task Force, IETF)讨论制定并最终成为RFC. 与ISO不同, IETF是一个开放性的民间组织, 这意味着任何人都可以参与讨论并提出自己的想法, 这些想法可以草案的形式被工作组认领开发, 经领导小组批准后就能成为正式的RFC文档. 因此TCP/IP在过去几十年中能够一直保持活跃的开发.</p>
+<p>第二, TCP/IP的标准化是实用的. 工程小组在基本完善了草案之后, 就会在多个设备上实现该草案并验证, 经过多轮实验和研讨, 才能确定最终的规范.</p>
+<p>反观OSI,  其选取的协议并不具有很强的可操作性, 一旦要做出更改还必须经过冗长的辩论和审批, 因此, TCP/IP代替OSI完成了标准化互联网的任务也就不足为奇了.</p>
+<h1 id="4-tcpip协议簇sup6sup-什么-不止两个协议">.4 TCP/IP协议簇<sup>6</sup>: 什么? 不止两个协议?</h1>
+<p>TCP/IP的名字很容易让人误以为这是两个协议的组合, 实际上, 当我们使用TCP/IP这个名词的时候, 我们所指的实际上是基于TCP和IP开发出的多种协议所组成的协议簇(Protocol Suite).</p>
+<p><img src="https://s-bj-2262-blog.oss.dogecdn.com/3507231936_8fb2c9d657.png" alt="TCP/IP参考模型与OSI模型. Source: KainHao, CC BY-NC-SA 4.0" loading="lazy"><br>
+<em>TCP/IP参考模型与OSI模型. Source: KainHao, CC BY-SA 4.0</em></p>
+<p><img src="https://s-bj-2262-blog.oss.dogecdn.com/protocol_suite.png" alt="TCP/IP协议簇 Source: KainHao, CC BY-SA 4.0" loading="lazy"><br>
+<em>TCP/IP协议簇 Source: KainHao, CC BY-SA 4.0</em></p>
+<p>从上图可以看出, TCP/IP协议簇中包含不同层的多个协议, 因此有时也将TCP/IP协议簇称为TCP/IP栈(Protocol Stack).</p>
+<h2 id="应用层协议">应用层协议</h2>
+<p>TCP/IP开发中贯穿始终的一个观点是, TCP/IP不依赖上层应用程序也不应直接参与上层的运行. 因此, 为了实现具体的应用, 人们基于TCP/IP协议开发了多种不同的应用层协议.<br>
+例如远程登录使用的TELNET协议, 用来进行文件传输的FTP<sup>7</sup>和收发电子邮件所使用的SMTP等.</p>
+<h2 id="传输层协议">传输层协议</h2>
+<p>传输层协议主要包括TCP和UDP两种. 如果要用词语来概括这两种协议的话, 最适合的词可能是&quot;可靠&quot;和&quot;高效&quot;. 这两个词清楚的体现了TCP和UDP在设计初衷上的差异:</p>
+<p>TCP是一种追求最可靠地传输数据的协议. 为了实现这一目标, TCP甚至不惜占用额外的计算和网络资源来确保数据进行完整的流式传输. 在发送数据前, TCP会在两个主机之间建立一个连接<sup>8</sup>, 确认连接可用后, TCP才会发送数据. 在发送过程中每发送若干个数据包, 接收端主机就会返回一个已收到消息的通知, 这样即使存在丢包或数据损坏等, 发送端也可以及时发现问题从而在传输过程中纠正.</p>
+<p>与TCP对整个数据传输过程进行控制不同, UDP是一种不进行控制的无连接协议. 也就是说, UDP在发送数据时不需要确认接收端的可用性, 甚至不需要确认接收端是否存在, 它仅负责进行数据发送. 即使出现丢包、数据损坏等现象, UDP也不会进行重新发送.</p>
+<p>从开发的角度, 集成了流量控制、传输确认等功能的TCP显然比UDP更易用, 但是也正是因为拥有多种控制机制, 在出现错误时TCP的排错要比UDP更为复杂. UDP更像是一种简单的工具, 虽然设计上层协议时需要考虑更多的可能性, 但是一旦确定就可以基本不受协议机制的控制传输数据, 完全按照既有的思路运行.</p>
+<h2 id="互联网层协议">互联网层协议</h2>
+<p>不难看出互联网层协议是整个TCP/IP栈的基础, 一切数据最终要交由互联网层协议来处理<sup>9</sup>. 不幸的是, 在互联网层上运行的最重要的设备是路由器, 整个互联网的核心设备, 这就注定了互联网层协议的晦涩和复杂.</p>
+<p>互联网层协议最重要的任务是进行路由控制, 也就是为数据包进行路径规划, 确保数据包能够到达目标主机.</p>
+<hr>
+<h1 id="commentary">Commentary</h1>
+<p>1: 严格来讲, ARPAnet的提出和实践很大程度上还要归功于美国防部的推动. 事实上, 分组交换最初的提出是为了保证在核战争中即使一部分网络基础设施被摧毁其余部分仍能正常运行.<br>
+2: 指端与端之间对称的协议, 即主机-主机协议.<br>
+3: 卡恩和瑟夫等人早期曾经设想将TCP/IP作为一个协议处理, 然而在开发过程中出现的问题使他们不得不重新审视早期的想法并将IP从TCP协议中拆分出来作为独立的协议存在.<br>
+4: 这样的说法在现在看来或许有些奇怪, 因为TCP/IP已经成为了一种事实上必须遵守的规则, 在生活中其他网络协议正在变得愈发少见. 但是实际上, 在过去, 有许多不使用TCP/IP协议的网络只需对一台出口交换机做简单配置就能接入使用TCP/IP协议的互联网而不需变动其他设备.<br>
+5: 有关TCP/IP及OSI参考模型的有关内容将在后续章节中详细介绍.<br>
+6: 本节所提及的协议将在后续章节中详细介绍.<br>
+7: 事实上, FTP最早是基于NCP开发的, 文中所说的的FTP是指后续开发的基于TCP/IP的版本.<br>
+8: 连接是指一种虚拟的通信线路, 又叫虚电路. 这是说, 两台主机之间并没有物理线路连接, 但是在上层看来与两台主机之间直接连接是等效的.<br>
+9: 仅考虑TCP/IP参考模型的情况下.</p>
+<h1 id="citations">Citations</h1>
+<p>不是啥严谨的文章, 所以放一起乱序导出了, 有些地方的cite没有标在文章里, 请读者自己猜(</p>
+<p>Leiner, Barry M., Vinton G. Cerf, David D. Clark, Robert E. Kahn, Leonard Kleinrock, Daniel C. Lynch, Jon Postel, Larry G. Roberts, and Stephen Wolff. 1998. <em>A Brief History of the Internet</em>. Available online at <a href="http://www.isoc.org/internet/history/brief.html">http://www.isoc.org/internet/history/brief.html</a>, Version 3.1, February 20.</p>
+<p>National Academies of Sciences, Engineering, and Medicine. 1999. <em>Funding a Revolution: Government Support for Computing Research</em>. Washington, DC: The National Academies Press.</p>
+<p>Licklider, J.C.R. 1960. &quot;Man-Computer Symbiosis,&quot; <em>IRE Transactions on Human Factors in Electronics</em> 1(March):4-11.</p>
+<p>Licklider, J.C.R., and R.W. Taylor. 1968. &quot;The Computer as a Communications Device.&quot; <em>Science and Technology</em> 76(April):21-31.</p>
+<p>Licklider, J.C.R. 1988a. &quot;The Early Years,&quot; p. 226 in <em>Expert Systems and Artificial Intelligence: Applications and Management</em>, Thomas C. Bartee, ed. Howard W. Sams &amp; Co., Indianapolis, Ind.</p>
+<p>Licklider, J.C.R., and R.W. Taylor. 1968. &quot;The Computer as a Communications Device.&quot;* Science and Technology* 76(April):21-31.</p>
+<p>Davies, D.W., K.A. Bartlett, R.A. Scantlebury, and P. T. Wilkinson. 1967. &quot;A Digital Communication Network for Computers Giving Rapid Response at Remote Terminals,&quot; <em>Proceedings of the ACM Symposium on Operating System Principles. Association for Computing Machinery</em>, New York.</p>
+<p>Roberts, Lawrence G. 1967. &quot;Multiple Computer Networks and Intercomputer Communication,&quot; <em>Proceedings of the ACM Symposium on Operating System Principles. Association for Computing Machinery</em>, New York.</p>
+<p>J. Reynolds, J. Postel. 1987. &quot;The Request For Comments Reference Guide,&quot; <em>RFC1000</em>. Available online at: <a href="https://www.rfc-editor.org/rfc/rfc1000.txt">https://www.rfc-editor.org/rfc/rfc1000.txt</a></p>
+<p>T. Berners-Lee, R. Fielding,  H. Frystyk. 1996. &quot;Hypertext Transfer Protocol -- HTTP/1.0,&quot; <em>RFC1945</em>. Available online at: <a href="https://www.rfc-editor.org/rfc/rfc1945.txt">https://www.rfc-editor.org/rfc/rfc1945.txt</a></p>
+<p>R. Fielding, J. Gettys, J. Mogul, H. Frystyk, L. Masinter, P. Leach, T. Berners-Lee. 1999. &quot;Hypertext Transfer Protocol -- HTTP/1.1,&quot; <em>RFC2616</em> ,Available online at: <a href="https://www.rfc-editor.org/rfc/rfc2616.txt">https://www.rfc-editor.org/rfc/rfc2616.txt</a></p>
+<p>McClain, D. 1998. &quot;Voice Technology Appears Ready to Recognize Bottom Line,&quot; <em>New York Times</em>, January 19, pp. C1-C2.</p>
+<p>Akera, Atsushi. 1996. &quot;Computers and Systems Analysis: Transforming Research Strategies at the National Bureau of Standards,&quot; <em>Dibner Symposium on the Spread of the Systems Approach</em>. Dibner Institute for the History of Science and Technology, Cambridge, Mass., April.</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Renaissance Science - I | 文艺复兴时期的科学(一)]]></title>
+        <id>https://www.kainhao.site/renaissance-science-i/</id>
+        <link href="https://www.kainhao.site/renaissance-science-i/">
+        </link>
+        <updated>2022-09-28T05:37:34.000Z</updated>
+        <summary type="html"><![CDATA[<p>在文章的开头, 我想套用一句在有关科学史的书中最滥俗的开场白: &quot;这是一篇关于文艺复兴时期科学的文章, 即使根本没有文艺复兴科学这种东西.&quot;<sup>1</sup></p>
+]]></summary>
+        <content type="html"><![CDATA[<p>在文章的开头, 我想套用一句在有关科学史的书中最滥俗的开场白: &quot;这是一篇关于文艺复兴时期科学的文章, 即使根本没有文艺复兴科学这种东西.&quot;<sup>1</sup></p>
+<!-- more -->
+<p>这是因为&quot;文艺复兴时期的科学&quot;这一概念本身就包含许多漏洞, 这些问题严重到迫使我们放弃这个概念. 我将在下文中阐释&quot;文艺复兴&quot;这一概念所包含的问题, 并且说明&quot;文艺复兴时期的科学&quot;这一概念到底是否存在. 无论怎样, 我写了这么一篇关于它的文章.</p>
+<p>我们可以, 并且应当从&quot;文艺复兴&quot;这一概念开始. 什么是文艺复兴(Renaissance)? 大多数人认为, 文艺复兴是欧洲人文主义思潮兴起的一段特定历史时期, 但是如今的历史学家用&quot;文艺复兴&quot;这个词来代表欧洲历史中许多个时期, 甚至是其他国家历史中的一段时期.</p>
+<p>词汇Renaissance的本义是&quot;重生&quot;, 通常用来指代中世纪以后, 欧洲新兴资产阶级对古希腊理性主义<sup>2</sup>文化(Intellectual Culture)的发掘和传播. 当然, 这些文化在中世纪并没有消失, 但是毫无疑问, 自西罗马帝国灭亡之后, 它们已经尘封在故纸堆里将近千年了. 需要注意的一点是, 这些文化在以新都君士坦丁堡为中心的东罗马帝国, 或称拜占庭帝国, 也没有消失. 有一种流传甚广的荒唐理论声称文艺复兴运动其实在公元1453年, 奥斯曼土耳其攻陷君士坦丁堡之后才开始, 但是就像我已经指出的那样, 这是种荒唐的理论.</p>
+<p><img src="https://s-bj-2262-blog.oss.dogecdn.com/5ad3e451de9b965d4b519a5ff8555da8.jpeg" alt="School of Athens" loading="lazy"><br>
+<em>图为拉斐尔的著名画作《雅典学院》. 这幅画作显示出文艺复兴时期古希腊古罗马文化的复兴. 图源:Wikimedia Commons</em></p>
+<p>然而研究阿拉伯帝国的人都会发现, 在此之前, 希腊文化早已经历过一次大规模的复兴了. 早在公元8世纪, 尚且年轻的阿拉伯帝国(Islamic Empire)就开始组织知识分子对希腊罗马著作进行大规模的翻译, 所译的内容几乎涵盖了当时所有学科. 阿拉伯、波斯和犹太学者迅速地将希腊的科学著作翻译为阿拉伯文, 并对其进行研究、批评、拓展. 进行这种翻译活动不仅极大地充实了当时的阿拉伯文化, 而且复兴了希腊罗马文化, 并最终影响了欧洲的多次文艺复兴.</p>
+<p><img src="https://s-bj-2262-blog.oss.dogecdn.com/baghdad_150_to_300_ah.png" alt="Bagdad" loading="lazy"><br>
+<em>约公元767-912年间的巴格达. 它是当时伊斯兰文化和希腊文化的中心. 图源:Wikimedia Commons</em></p>
+<p>你可能会注意到, 在上文我使用了&quot;多次文艺复兴&quot;. 许多历史学家认为在仅中世纪这一阶段就有三次文艺复兴. 第一次被称为加洛林文艺复兴(Carolingian Renaissance), 可以追溯到公元8-9世纪, 包括查理曼<sup>3</sup>和路易一世<sup>4</sup>统治时期.</p>
+<p>此次文艺复兴主要为整个欧洲的神职人员建立了教育系统, 并增加了拉丁语这一课目. 由于当时的社会环境, 此次文艺复兴并不注重科学教育, 但当时阿尔昆<sup>5</sup>是亚琛宫廷中学者的领导者, 在他的领导下, 数学、历法、星象学和天文学等内容也借由这次文艺复兴得以传播.</p>
+<p><img src="https://s-bj-2262-blog.oss.dogecdn.com/raban-maur_alcuin_otgar.jpg" alt="" loading="lazy"><br>
+<em>赫拉巴努斯·莫鲁斯<sup>6</sup>(左)与阿尔昆(左)一起向奥特加主教介绍他们的作品. 图源:Wikimedia Commons</em></p>
+<p>阿尔昆使得尊者比德<sup>7</sup>(他曾撰写大量关于数学的著作, 并且曾教导阿尔昆的老师——约克大主教爱格伯特)在数学方面的研究成果流入欧洲大陆并得以广泛传播.</p>
+<p><img src="https://s-bj-2262-blog.oss.dogecdn.com/e-codices_bke-0047_001v_medium.jpg" alt="Bede" loading="lazy"><br>
+<em>比德在撰写《英吉利教会史》, 出自瑞士恩格尔贝格修道院的手抄本. 图源: Wikimedia Commons</em></p>
+<p>查理曼的亚琛宫廷与阿拉伯帝国有贸易和外交往来, 几乎可以肯定的是, 这对加洛林王朝的占星术与星象学中使用的数学方法有着实践上的影响. 值得注意的是, 阿尔昆和同僚的研究并非是在毫无基础的情况下开展的, 而是使用了幸存下来的, 包括波爱修、马克罗比乌斯、马缇诺斯·卡佩拉和圣伊西多尔<sup>8</sup>等人的前代学者的研究成果. 例如, 比德就曾引用圣伊西多尔的百科全书《词源(Etymologiæ)》.</p>
+<p>中世纪的第二次文艺复兴是发生在奥托一世、二世和三世(Otto I, II and III)统治时期(主要是在11世纪)的的奥托文艺复兴(Ottonian Renaissance) .通常认为, 奥托文艺复兴开始的标志是951年奥托一世与丧偶的意大利女王阿德尔海德(931-999)的婚姻. 这次婚姻将德意志(东法兰克)和意大利的王权统一起来, 并使得奥托在962年被教皇加冕为神圣罗马皇帝.</p>
+<p><img src="https://s-bj-2262-blog.oss.dogecdn.com/meissner-dom-stifter.jpg" alt="Statue of Otto" loading="lazy"><br>
+<em>迈森圣母教堂中的奥托一世(右)和阿德尔海德像. 他们在德意志和法兰克合并之后结婚. 图源: Wikimedia Commons</em></p>
+<p>这次文艺复兴的范围主要局限于宫廷、修道院和主教座堂学校, 重点是建筑和艺术, 这些内容受到来自拜占庭帝国的重要影响.</p>
+<p>然而, 由于奥托对热贝尔<sup>9</sup>的资助, 此次文艺复兴在数学上也产生了强大的影响. 这一资助最终使得热贝尔成为教宗西尔维斯特二世.<sup>10<sup></p>
+<p>热贝尔是奥里亚克圣杰拉尔德修道院的一名僧侣, 他被巴塞罗那伯爵博雷尔二世带到了西班牙, 在那里他直接接触到了伊斯兰文化, 并从现有的阿拉伯语资料中研究和学习了一些天文学和数学. 公元969年, 博雷尔二世带着热贝尔去了罗马, 在那里他见到了奥托一世和教宗约翰十三世, 后者劝说奥托聘请热贝尔为他儿子未来的奥托二世的导师. 后来，热贝尔又为奥托二世的儿子、未来的奥托三世行使了同样的职责. 与皇室的密切联系促进了热贝尔的教会事业, 使他最终被任命为教宗. 但本文中更重要的是, 这促进了他作为教育家的事业.</p>
+<p>热贝尔教授波爱修传下来的全部七门文理学科<sup>12</sup>, 但特别强调教授&quot;四术&quot;——算术、几何、音乐和天文, 并将他在西班牙的几年中从阿拉伯来源获得的知识带入其中. 他将浑天仪和算盘重新引入欧洲, 并且是最早使用印度-阿拉伯数字的人之一(尽管他的使用没有什么效果). 据记载, 他还使用观测管<sup>13</sup>来帮助进行裸眼天文观测.</p>
+<p>热贝尔不是一个实践科学家, 而是一个教育家, 他写了一系列关于科学的教科书: 《Libellus de numerorum divisione》《De geometria》《Regula de abaco computi》《Liber abaci》《Libellus de rationali et ratione uti》<sup>14</sup>.</p>
+<p><img src="https://s-bj-2262-blog.oss.dogecdn.com/pope_sylvester_ii_gerbert_daurillac_-_de_geometria.jpg" alt="De Geometria" loading="lazy"><br>
+<em>12世纪的《De geometria》抄本. 图源: Wikimedia Commons</em></p>
+<p>他的手稿和信件的影响相当大, 并且他的同事和学生也扩大了他的影响. 他的同僚阿博<sup>15</sup>, 撰写了很多关于算数和天文学的文章. 他的学生福尔贝特<sup>16</sup>同样尝试推行印度-阿拉伯数字系统.</p>
+<p>热贝尔和他的下属们, 部分地将伊斯兰文化领域中的数学科学重新带给了欧洲, 这可以视作为一个世纪后称为科学文艺复兴的第三次文艺复兴的前奏. 那时有大量的科学研究被欧洲学者从阿拉伯文翻译为拉丁文, 覆盖面极广. 这些欧洲学者们意识到了自己与伊斯兰邻居相比的无知, 于是前往伊斯兰和欧洲文化的交界处——南意大利和西班牙, 有些甚至深入伊斯兰腹地. 科学文艺复兴持续了几个世纪, 与欧洲大学的最初建立发生在同一时期, 并在之后的人文主义文艺复兴中发挥了重要作用. 人文主义者们将其视为得力助手. 这一点在之后的博客中会详细谈及.</p>
+<hr>
+<h1 id="commentary">Commentary</h1>
+<p>注1: 作者自注: 对那些可能还不知道出处的读者: 这句话出自Stevin Shapin的著作<em>The Scientific Revolution, The University of Chicago Press, Chicago and London, 1996</em> . 其原文是&quot;这是一本关于科学革命的书, 即使根本没有科学革命这种东西.&quot;<br>
+注2: 此处是指广义上的理性主义.<br>
+注3: 即Karl der Große.<br>
+注4: 即Louisler或Louis the pouis, 查理曼之子, 法兰克王国的国王(约814年-840年在位).<br>
+注5: 即Alcuin或Alcuin of York(又称Albinus), 基督教僧侣.<br>
+注6: Hrabanus Maurus Magnentius, 本笃会修士, 神学家,诗人, 自847年奥特加去世后接任美因茨大主教. 曾为当时亚琛宫廷中的学校撰写书籍, 在当时的文艺复兴中占有重要地位.<br>
+注7: 即Bede或Venerable Bede, 学者, 神学家, 编年史学家, 早期盎格鲁-拉丁文学的杰出代表.<br>
+注8: 分别是Boethius (477–524), Macrobius (fl. c. 400), Martianus Capella (fl. c. 410–420) and Isidore of Seville (c. 560–636).<br>
+注9: Gerbert of Aurillac (c. 946-1003).<br>
+注10: 原文此处有链接: <a href="https://thonyc.wordpress.com/2012/05/12/a-mathematician-who-became-pope/">https://thonyc.wordpress.com/2012/05/12/a-mathematician-who-became-pope/</a><br>
+注11: Borrell II de Barcelona (c. 874-911).<br>
+注12: 即Liberal Arts, 原意应为&quot;自由人所应具有的学识&quot;, 或译通识教育, 来源于La liberalaj artoj(自由七艺), 包括三艺和四术. 三艺指文法、逻辑和修辞学, 四术指算术、几何、天文和音乐.<br>
+注13: 原文为sighting tube, 此处似乎是指类似中国古代四游仪中的窥管.<br>
+注14: 译者的拉丁文水平并不高, 对上述几本书的书名作出的译文仅供参考: 《论除法》《论几何》《计数法则》《算数》《论理性及其应用》<br>
+注15: Abbo of Fleury (c. 945–1004).<br>
+注16: Fulbert of Chartres (c. 960–1028).</p>
+<hr>
+<h1 id="citations">Citations</h1>
+<p>译者: 你知道的, 严格意义上这里不能cite Wikipedia, 所以我没有东西写了.</p>
+<hr>
+<p>本文译自<a href="https://thonyc.wordpress.com/2021/01/13/renaissance-science-i/">Renaissance Science - I</a>, 翻译并转载已获作者授权, 本文依照<a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh">CC-BY-NC-ND 4.0</a>协议进行授权</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[如何在课堂上安全地传纸条: 密码学闲话]]></title>
+        <id>https://www.kainhao.site/essayistic-gossip-about-cryptography/</id>
+        <link href="https://www.kainhao.site/essayistic-gossip-about-cryptography/">
+        </link>
+        <updated>2022-08-07T06:15:54.000Z</updated>
+        <summary type="html"><![CDATA[<p>设想这样一个场景:</p>
+<p>你现在坐在教室的一角, 而长达两个小时的课堂才刚刚开始. 你攒了一肚子怪话迫不及待地想要和教室对角的哥们分享, 于是你决定写纸条. 不幸的是, 纸条的传送路线并不安全——这条路线上有准备偷窥你的纸条的同学, 还有在教室里游走, 随时准备没收纸条的老师.</p>
+<p>事情看起来很棘手, 对吗?</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>设想这样一个场景:</p>
+<p>你现在坐在教室的一角, 而长达两个小时的课堂才刚刚开始. 你攒了一肚子怪话迫不及待地想要和教室对角的哥们分享, 于是你决定写纸条. 不幸的是, 纸条的传送路线并不安全——这条路线上有准备偷窥你的纸条的同学, 还有在教室里游走, 随时准备没收纸条的老师.</p>
+<p>事情看起来很棘手, 对吗?</p>
+<!-- more -->
+<p>不幸的是, 这是自文字出现以来所有尝试秘密传递信息的人所共同面对的困境. 为了保证信息被安全且保密地传输, 人们开始使用密码<sup>1</sup>. 研究如何将可读的信息(称为&quot;明文&quot;)通过某种手段变为不可读的信息(称为&quot;密文&quot;<sup>2</sup>)的学科就是密码学.<sup>3</sup>.</p>
+<hr>
+<h2 id="本文中加密算法通常用ex表示-解密算法用dx表示">本文中加密算法通常用<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>E</mi><mo>(</mo><mi>x</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">E(x)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mclose">)</span></span></span></span>表示, 解密算法用<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>D</mi><mo>(</mo><mi>x</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">D(x)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">D</span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mclose">)</span></span></span></span>表示</h2>
+<h1 id="0x01-古典密码">0x01 古典密码</h1>
+<h2 id="1-scytale密码">.1 Scytale密码</h2>
+<p>古典密码的历史可上溯到约公元前500年, 由斯巴达人所编制的Scytale密码<sup>4</sup>. 斯巴达人把长条纸螺旋形地斜绕在一个多棱棒上, 将文字沿棒的水平方向从左到右书写,写一个字旋转一下, 写完一行再另起一行从左到右写, 直到写完. 取下纸带后, 纸条上的文字消息杂乱无章、无法理解, 这就是密文, 但将它绕在另一个同等尺寸的棒子上后, 就能看到原始的消息. 这是可考的最早的密码技术.</p>
+<h2 id="2-凯撒密码">.2 凯撒密码</h2>
+<p>凯撒密码是一种最简单且广为人知的线性映射密码, 传说是由古罗马将领尤利乌斯·凯撒所发明. 其原理是将明文中的所有字母都在字母表上向后或向前按照一个固定数目(也就是通常所说的密钥, 叫做<code>偏移量</code>, 记作<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span>)进行移动. 例如, 当<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">n=2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span></span></span></span>时, 所有A将被替换成B, Y将被换成Z.<br>
+不难看出, 其加解密的公式为(记密文为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">x</span></span></span></span>):</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>E</mi><mi>n</mi></msub><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mo>(</mo><mi>x</mi><mo>+</mo><mi>n</mi><mo>)</mo><mi>m</mi><mi>o</mi><mi>d</mi><mn>26</mn></mrow><annotation encoding="application/x-tex">E_n(x) = (x+n) mod 26
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.05764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">n</span><span class="mclose">)</span><span class="mord mathdefault">m</span><span class="mord mathdefault">o</span><span class="mord mathdefault">d</span><span class="mord">2</span><span class="mord">6</span></span></span></span></span></p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>D</mi><mi>n</mi></msub><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mo>(</mo><mi>x</mi><mo>−</mo><mi>n</mi><mo>)</mo><mi>m</mi><mi>o</mi><mi>d</mi><mn>26</mn></mrow><annotation encoding="application/x-tex">D_n(x) = (x-n) mod 26 
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.02778em;">D</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.02778em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">n</span><span class="mclose">)</span><span class="mord mathdefault">m</span><span class="mord mathdefault">o</span><span class="mord mathdefault">d</span><span class="mord">2</span><span class="mord">6</span></span></span></span></span></p>
+<p>其缺陷在于可使用的偏移量并不足够大或足够小, 即<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>n</mi><mrow><mi>m</mi><mi>a</mi><mi>x</mi></mrow></msub><mo>=</mo><mn>25</mn><mo separator="true">,</mo><msub><mi>n</mi><mrow><mi>m</mi><mi>i</mi><mi>n</mi></mrow></msub><mo>=</mo><mo>−</mo><mn>25</mn></mrow><annotation encoding="application/x-tex">n_{max}=25, n_{min}=-25</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">n</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">m</span><span class="mord mathdefault mtight">a</span><span class="mord mathdefault mtight">x</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8388800000000001em;vertical-align:-0.19444em;"></span><span class="mord">2</span><span class="mord">5</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">n</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">m</span><span class="mord mathdefault mtight">i</span><span class="mord mathdefault mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">−</span><span class="mord">2</span><span class="mord">5</span></span></span></span>, 因而可以通过穷举法轻易破解. 即使不使用穷举法, 也可以通过频率分析或特征单词分析等方法进行破解.</p>
+<h3 id="实例">实例</h3>
+<p>明文: SHINE<br>
+偏移量<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span>: 2<br>
+密文: TIJOF</p>
+<h2 id="3-维吉尼亚密码">.3 维吉尼亚密码</h2>
+<p>维吉尼亚密码是使用一系列凯撒密码组成密码字母表的线性映射加密算法. 其使用若干个字母作为密钥, 词组中每一个字母都作为移位替换密码密钥确定一个替换表, 维吉尼亚密码循环的使用每一个替换表完成明文字母到密文字母的变换, 最后所得到的密文字母序列即为加密得到的密文.</p>
+<h3 id="实例-2">实例</h3>
+<p>记明文为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>K</mi></mrow><annotation encoding="application/x-tex">K</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07153em;">K</span></span></span></span>,  其长度为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>l</mi><mi>e</mi><mi>n</mi><mo>(</mo><mi>K</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">len(K)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">e</span><span class="mord mathdefault">n</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.07153em;">K</span><span class="mclose">)</span></span></span></span>, 密钥为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>k</mi><mi>e</mi><mi>y</mi></mrow><annotation encoding="application/x-tex">key</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mord mathdefault">e</span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span></span></span></span>.<br>
+设明文为PERASPERA, 密钥为ADASTRA.<br>
+首先循环密钥直到其长度与明文相同<sup>5</sup>:</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>l</mi><mi>e</mi><mi>n</mi><mo>(</mo><mi>K</mi><mo>)</mo><mo>=</mo><mi>l</mi><mi>e</mi><mi>n</mi><mo>(</mo><mi>k</mi><mi>e</mi><msub><mi>y</mi><mn>1</mn></msub><mo>+</mo><mi>k</mi><mi>e</mi><msub><mi>y</mi><mn>2</mn></msub><mo>+</mo><mi>k</mi><mi>e</mi><msub><mi>y</mi><mn>3</mn></msub><mo>+</mo><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">len(K) = len(key_1+key_2+key_3+...) 
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">e</span><span class="mord mathdefault">n</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.07153em;">K</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">e</span><span class="mord mathdefault">n</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mord mathdefault">e</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mord mathdefault">e</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mord mathdefault">e</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">.</span><span class="mord">.</span><span class="mord">.</span><span class="mclose">)</span></span></span></span></span></p>
+<p>即ADASTRAAD, 然后用字母在字母表中对应的位置替换字母, A在字母表中是第1位, D在字母表中是第4位...以此类推, 然后根据每位密钥的位置, 将其作为偏移量对对应位置的明文进行凯撒加密.<br>
+得到的结果是: PHRSLGERD<br>
+一般, 特征单词分析等方法对维吉尼亚密码仍然有效. 此外, 还有一些无密钥破解的方法, 如:<a href="http://atomcated.github.io/Vigenere/">http://atomcated.github.io/Vigenere/</a></p>
+<h2 id="4-栅栏密码">.4 栅栏密码</h2>
+<p>栅栏密码是一种移位密码. 其加密原理是将明文分为每<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span></span></span></span>个字符一组, 然后将每组字符依序连接, 得到密文.</p>
+<h3 id="实例-3">实例</h3>
+<p>ADASTRAPERASPREA, <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>k</mi><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">k=3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">3</span></span></span></span><br>
+分组后的结果是: ADA|STR|APE|RAS|PRE|A<br>
+取每组第一个字母得到ASARPA, 取第二个得到DTPAR, 取第三个得到ARESE, 从而得到密文ASARPADTPARARESE.</p>
+<h2 id="5-列序法">.5 列序法</h2>
+<p>列序法, 顾名思义, 就是将原本按行排列的明文转为按序排列.</p>
+<h3 id="实例-4">实例</h3>
+<p>明文: spectrophoto, 列数为4<br>
++---+---+---+---+<br>
+|   s  |  p  |  e  |  c  |<br>
++---+---+---+---+<br>
+|   t  |   r  |  o  |  p  |<br>
++---+---+---+---+<br>
+|  h  |   o |   t  |  o  |<br>
++---+---+---+---+<br>
+按列得出的密文是sthproeotcpo.</p>
+<h2 id="6-enigma密码机">.6 Enigma密码机</h2>
+<p>Enigma是一种使用多表代换的密码学, 二战期间在德国开发. 它通过不断改变明文和密文的字母映射关系, 对明文字母们进行着连续不断的换表加密操作.</p>
+<h2 id="7-小结">.7 小结</h2>
+<p>不难看出, 这一时期的密码学更像是一门艺术, 其核心手段是代换和置换. 代换是指明文中的每一个字符被替换成密文中的另一个字符, 接收者对密文做反向替换便可恢复出明文; 置换是密文和明文字母保持相同, 但顺序被打乱.<sup>6</sup></p>
+<h1 id="0x02-近代密码学">0x02 近代密码学</h1>
+<p>密码形成一门新的学科是在20世纪70年代，这是受计算机科学蓬勃发展刺激和推动的结果。快速电子计算机和现代数学方法一方面为加密技术提供了新的概念和工具，另一方面也给破译者提供了有力武器。计算机和电子学时代的到来给密码设计者带来了前所未有的自由，他们可以轻易地摆脱原先用铅笔和纸进行手工设计时易犯的错误，也不用再面对用电子机械方式实现的密码机的高额费用。</p>
+<p>Arthur Scherbius于1919年设计出了历史上最著名的密码机—德国的Enigma机,，在二次世界大战期间， Enigma曾作为德国陆、海、空三军最高级密码机。Enigma机使用了3个正规轮和1个反射轮。这使得英军从1942年2月到12月都没能解读出德国潜艇发出的信号。转轮密码机的使用大大提高了密码加密速度，但由于密钥量有限，到二战中后期时，引出了一场关于加密与破译的对抗。首先是波兰人利用德军电报中前几个字母的重复出现，破解了早期的Enigma密码机，而后又将破译的方法告诉了法国人和英国人。英国人在计算机理论之父——图灵的带领下，通过寻找德国人在密钥选择上的失误，并成功夺取德军的部分密码本，获得密钥，以及进行选择明文攻击等等手段，破解出相当多非常重要的德军情报。</p>
+<p>这一阶段真正开始源于香农在20世纪40年代末发表的一系列论文，特别是1949年的《保密系统通信理论》，把已有数千年历史的密码学推向了基于信息论的科学轨道。近代密码发展中一个重要突破是“数据加密标准”（DES）的出现。DES密码的意义在于，首先，其出现使密码学得以从政府走向民间，其设计主要由IBM公司完成，国家安全局等政府部门只是参与其中，最终经美国国家标准局公开征集遴选后，确定为联邦信息处理标准。其次，DES密码设计中的很多思想（Feistel结构、S盒等），被后来大多数分组密码所采用。再次，DES出现之后，不仅在美国联邦部门中使用，而且风行世界，并在金融等商业领域广泛使用。</p>
+<h1 id="0x03-现代密码学">0x03 现代密码学</h1>
+<p>1976 年，美国密码学家提出“公钥密码”概念。此类密码中加密和解密使用不同的密钥，其中，用于加密的叫做公钥，用于解密的为私钥。1977年，美国麻省理工学院提出第一个公钥加密算法RSA算法，之后ElGamal、椭圆曲线、双线性对等公钥密码相继被提出，密码学真正进入了一个新的发展时期。一般来说，公钥密码的安全性由相应数学问题在计算机上的难解性来保证，以广为使用的RSA算法为例，它的安全性是建立在大整数素因子分解在计算机上的困难性，如，对于整数22，我们易于发现它可以分解为2和11两个素数相乘，但对于一个500位的整数，即使采用相应算法，也要很长时间才能完成分解。</p>
+<p>好了, 现在我们已经介绍完传纸条时比较实用的技巧和密码学的发展历史了, 现在该来点我喜欢的东西了--</p>
+<h2 id="1-同余">.1 同余!</h2>
+<p>同余定理是数论中的重要概念:</p>
+<blockquote>
+<p>给定一个正整数m，如果两个整数<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">a</span></span></span></span>和<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>b</mi></mrow><annotation encoding="application/x-tex">b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">b</span></span></span></span>满足<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>(</mo><mi>a</mi><mo>−</mo><mi>b</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">(a-b)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathdefault">a</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">b</span><span class="mclose">)</span></span></span></span>能够被<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">m</span></span></span></span>整除，即<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mfrac><mrow><mo>(</mo><mi>a</mi><mo>−</mo><mi>b</mi><mo>)</mo></mrow><mi>m</mi></mfrac></mrow><annotation encoding="application/x-tex">\frac{(a-b)}{m}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.355em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.01em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">m</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.485em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">(</span><span class="mord mathdefault mtight">a</span><span class="mbin mtight">−</span><span class="mord mathdefault mtight">b</span><span class="mclose mtight">)</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span>得到一个整数，那么就称整数<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">a</span></span></span></span>与<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>b</mi></mrow><annotation encoding="application/x-tex">b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">b</span></span></span></span>对模<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">m</span></span></span></span>同余，记作<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi><mo>≡</mo><mi>b</mi><mo>(</mo><mi>m</mi><mi>o</mi><mi>d</mi><mi>m</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">a\equiv b (mod  m)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.46375em;vertical-align:0em;"></span><span class="mord mathdefault">a</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≡</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">b</span><span class="mopen">(</span><span class="mord mathdefault">m</span><span class="mord mathdefault">o</span><span class="mord mathdefault">d</span><span class="mord mathdefault">m</span><span class="mclose">)</span></span></span></span></p>
+</blockquote>
+<hr>
+<h1 id="exegesis">Exegesis</h1>
+<p>1: 用于登录、认证的&quot;密码&quot;实际上叫做口令(<code>token</code>或<code>password</code>). 对于密码, 一个简明易懂的定义是&quot;按照'你知, 我知, 他不知'原则编制出用于传输的信息&quot;.<br>
+2: 通常而言, 密文可通过某种手段转化为明文, 但也不尽然. 例如, <code>SHA256</code>等哈希算法就是不可逆的加密算法.<br>
+3: 显而易见的是, 密码的首要目的是<em>隐藏信息的涵义</em>而不是<em>隐藏信息的存在</em>.<br>
+4: 又称&quot;塞塔密码&quot;&quot;滚筒密码&quot;.<br>
+5: 如果不能理解的话, 这一步实际上是在这样进行:<br>
+想象将密文无限重复. 即: ADASTRA|ADASTRA|ADASTRA|ADASTRA... , 然后从头开始截取长度与明文长度相等的字符串, 得到ADASTRAAD.<br>
+6: 其实把这些密码放上来纯粹是为了好玩...</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Kotlin初识]]></title>
+        <id>https://www.kainhao.site/kotlin-chu-shi/</id>
+        <link href="https://www.kainhao.site/kotlin-chu-shi/">
+        </link>
+        <updated>2022-01-20T10:41:04.000Z</updated>
+        <content type="html"><![CDATA[<p>搜<code>Kotlin</code>教程居然没搜到特别系统的入门教程...(°ー°〃)一怒之下准备自己写一份</p>
+<h1 id="什么是kotlin">什么是Kotlin?</h1>
+<p><code>Kotlin</code>是由<code>Jetbrains</code> (对, 就是那个开发<code>IDEA</code>的公司)开发的基于<code>JVM</code>的静态编程语言.</p>
+<h1 id="关于kotlin发展历程的小小介绍">关于Kotlin发展历程的小小介绍</h1>
+<p>2011 年 7 月, <code>JetBrains</code>推出<code>Kotlin</code>项目, 这是一个基于<code>JVM</code>的新语言. <code>Kotlin</code>的既定目标之一是像<code>Java</code>一样快速编译. 2012年2月, <code>Kotlin</code>开源, 采用<code>Apache 2</code>许可.</p>
+<p><code>Kotlin</code> v1.0 于 2016 年 2 月 15 日发布. 这被认为是第一个官方稳定版本, 并且<code>JetBrains</code>已准备从该版本开始的长期向后兼容性.</p>
+<p><code>Google</code>在2017年的<code>Google I/O</code>大会宣布在<code>Android</code>上为<code>Kotlin</code>提供最佳支持.</p>
+<h1 id="kotlin好在哪里">Kotlin好在哪里?</h1>
+<ul>
+<li>** <code>Kotlin</code>代码可以被编译成<code>JVM</code>字节码, 二进制文件或者<code>JavaScript</code>代码. ** 这意味着, Kotlin不仅可以被用于安卓, 也可以被拿来写数据科学相关、JS和服务器端程序.</li>
+</ul>
+<blockquote>
+<p>Tips: 基于<code>JVM</code>的<code>Kotlin</code>代码不能直接用在<code>JavaScript</code>平台上.</p>
+</blockquote>
+<ul>
+<li>** <code>Kotlin</code>拥有<code>null-safe</code>机制. ** 这意味着, 编译器会标记那些可能为空的引用, 并且尽可能地避免出现<code>NullPointException</code>.</li>
+<li>** <code>Kotlin</code>很简洁. ** 它大大减少了你需要写的样板代码的代码量.</li>
+</ul>
+<p>...</p>
+<h1 id="属于自己的kotlin环境">属于自己的Kotlin环境</h1>
+<p><em>由于我这个铁Five也不会安卓开发, 所以Android Studio就不介绍了`(ᝫ´ )</em></p>
+<h2 id="idea部署">IDEA部署</h2>
+<p>自IDEA版本15后就自带了Kotlin环境, 所以我们直接下载IDEA后创建Kotlin项目就好:P</p>
+<figure data-type="image" tabindex="1"><img src="https://blog-1257373799.cos.ap-hongkong.myqcloud.com/image-20220120181545855.png" alt="" loading="lazy"></figure>
+<h2 id="在线ide">在线IDE</h2>
+<p>https://play.kotlinlang.org/</p>
+<figure data-type="image" tabindex="2"><img src="https://blog-1257373799.cos.ap-hongkong.myqcloud.com/image-20220120182144296.png" alt="" loading="lazy"></figure>
+<p>初学阶段强烈推荐, 不用面对IDEA那么复杂的界面, 写单CLI程序足够了.</p>
+<h1 id="hello-kotlin">Hello, Kotlin</h1>
+<p>在你的IDE中键入以下代码:</p>
+<pre><code class="language-kotlin">/*
+This is my first kotlin program
+ */
+
+class Greeter(var name: String) {
+    fun greet() {
+        println(&quot;Hello, $name!&quot;)
+    }
+}
+
+fun main() {
+    Greeter(&quot;Kotlin&quot;).greet()
+}
+
+/*
+下面这段代码: 
+fun main() {
+   println(&quot;Hello World!&quot;)
+}
+也可以运行, 但我更习惯面向对象的写法(｀ 3′)
+*/
+</code></pre>
+<p>点击运行, 你应该会看到控制台输出以下内容:</p>
+<p><code>Hello, Kotlin!</code></p>
+<p>至于这玩意怎么跑起来的, 我们放在下一篇文章去介绍...</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[写在2022的元旦]]></title>
+        <id>https://www.kainhao.site/xie-zai-2022-de-yuan-dan/</id>
+        <link href="https://www.kainhao.site/xie-zai-2022-de-yuan-dan/">
+        </link>
+        <updated>2022-01-01T08:53:33.000Z</updated>
+        <content type="html"><![CDATA[<p>2021, 比我想象的更难, 更苦.<br>
+又是鸡飞狗跳的一年. 这一年我身边很多人失业, 很多人降薪, 很多人抑郁.<br>
+在时间的刻度里, 日复一日的庸常容易被看淡. 身边不断有人匆匆离去, 而当你伸手却抓不住那些行将离去的人和事的时候, 你才会意识到, 他们真的要永远离开你了. 希望时间的刻度里, 留下这些朴素的记忆, 那是最令人动容的守望与活着, 也是生活价值与生命尊严的烙印.<br>
+即使病毒依然在全球蔓延, 即使世界各地依然冲突动乱不止, 即使天灾人祸交叠, 我依然相信时间的力量, 相信没有到不了的明天. 时间是衡量所有雄心万丈的标尺. 时间的刻度可以精细到微秒, 但也可以放大到世纪. 天问一号的火星之旅用了六年的时间. 现在有人开始讨论火星移民, 这将是一段更加漫长的旅途. 疫情摁下了暂停键, 却无法停止人类仰望星空的脚步, 这是人类勇气和信心的证明.</p>
+<p>我们在这样的相信中告别2021.<br>
+总而言之, 悟已往之不谏,知来者之可追.实迷途其未远,觉今是而昨非. 此时此刻, 我仍然要用最平凡最普通的话语，表达对这个世界的新年祝福: 你好, 2022!</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[提问的艺术]]></title>
+        <id>https://www.kainhao.site/the-art-of-questioning/</id>
+        <link href="https://www.kainhao.site/the-art-of-questioning/">
+        </link>
+        <updated>2022-01-01T01:28:33.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="一-提问之前">一、提问之前</h2>
+<p><strong>在通过电邮、新闻组或者聊天室提出技术问题前，检查你有没有做到：</strong></p>
+<p>1、通读手册，试着自己找答案。<br>
+2、在FAQ里找答案（一份维护得好的FAQ可以包罗万象:）。<br>
+3、在网上搜索（推荐Google或Bing）。<br>
+4、向你身边精于此道的朋友打听。</p>
+<p><strong>当你提出问题的时候，首先要说明在此之前你干了些什么。</strong></p>
+<blockquote>
+<p>这将有助于树立你的形象：你不是一个妄图不劳而获的乞讨者，不愿浪费别人的时间。如果提问者能从答案中学到东西，我们更乐于回答他的问题。</p>
+</blockquote>
+<p>周全的思考，准备好你的问题，草率的发问只能得到草率的回答，或者根本得不到任何答案。越表现出在寻求帮助前为解决问题付出的努力，你越能得到实质性的帮助。</p>
+<p>小心别问错了问题。如果你的问题基于错误的假设，普通黑客（J. Random Hacker）通常会用无意义的字面解释来答复你，心里想着“蠢问题…”，希望着你会从问题的回答（而非你想得到的答案）中汲取教训。</p>
+<p>决不要自以为够资格得到答案，你没这种资格。毕竟你没有为这种服务支付任何报酬。你要自己去“挣”回一个答案，靠提出一个有内涵的，有趣的，有思维激励作用的问题–一个对社区的经验有潜在贡献的问题，而不仅仅是被动的从他人处索要知识–去挣到这个答案。</p>
+<p>另一方面，表明你愿意在找答案的过程中做点什么，是一个非常好的开端。“谁能给点提示？”、“我这个例子里缺了什么？”以及“我应该检查什么地方？”比“请把确切的过程贴出来”更容易得到答复。因为你显得只要有人指点正确的方向，你就有完成它的能力和决心。</p>
+<h2 id="二-怎样提问">二、怎样提问</h2>
+<h3 id="1-选择正确的讨论组">1、选择正确的讨论组</h3>
+<p><strong>小心选择提问的场合。如果象下面描述的那样，你很可能被忽略掉或者被看作失败者：</strong></p>
+<p>1、在风马牛不相及的讨论组提出你的问题 ；<br>
+2、在探讨高级技巧的讨论组张贴非常初级的问题；<br>
+3、反之亦然 在太多的不同新闻组交叉张贴。</p>
+<h3 id="2-用辞贴切语法正确拼写无误">2、用辞贴切，语法正确，拼写无误</h3>
+<p>1、粗心的写作者通常也是马虎的思考者。 回答粗心大意者的问题很不值得，我们宁愿把时间耗在别处。<br>
+2、正确的拼写，标点符号和大小写很重要。一般的说，如果你的提问写得象个半文盲，你很有可能被忽视。<br>
+3、如果你在使用非母语的论坛提问，你可以犯点拼写和语法上的小错–但决不能在思考上马虎。</p>
+<h3 id="3-使用含义丰富描述准确的标题">3、使用含义丰富，描述准确的标题</h3>
+<p>在邮件列表或者新闻组中，大约50字以内的主题标题是抓住资深专家注意力的黄金时机。别用喋喋不休的“帮帮忙”（更别说“救命啊！！！！！”这样让人反感的话）来浪费这个机会。不要妄想用你的痛苦程度来打动我们， 别用空格代替问题的描述，哪怕是极其简短的描述。</p>
+<p>如果你在回复中提出问题，记得要修改内容标题，表明里面有一个问题。一个看起来象“Re：测试”或者“Re：新bug”的问题很难引起足够重视。另外，引用并删减前文的内容，给新来的读者留下线索。</p>
+<h3 id="4-精确描述信息量大">4、精确描述，信息量大</h3>
+<p>1、谨慎明确的描述症状。<br>
+2、提供问题发生的环境（机器配置、操作系统、应用程序以及别的什么）。<br>
+3、说明你在提问前是怎样去研究和理解这个问题的。<br>
+4、说明你在提问前采取了什么步骤去解决它。<br>
+5、罗列最近做过什么可能有影响的硬件、软件变更。</p>
+<h3 id="5-话不在多在于提供精确有效的信息">5、话不在多，在于提供精确有效的信息</h3>
+<p>不能简单的把成吨的出错代码、数据或日志完全转储摘录到你的提问中。如果你有庞大而复杂的测试条件，尽量把它剪裁得越小越好。</p>
+<p>这样做的用处至少有三点。<br>
+第一，表现出你为简化问题付出了努力，这可以使你得到回答的机会增加；<br>
+第二，简化问题使你得到有用答案的机会增加；<br>
+第三，在提炼你的bug报告的过程中，也许你自己就能找出问题所在或作出更正。</p>
+<h3 id="6-去除无意义的疑问">6、去除无意义的疑问</h3>
+<p><strong>别用无意义的话结束提问</strong>，例如**“有人能帮我吗？”或者“有答案吗？”**。首先：如果你对问题的描述不很合适，这样问更是画蛇添足。其次：由于这样问是 画蛇添足，黑客们会很厌烦你–而且通常会用逻辑上正确的回答来表示他们的蔑视，例如：“没错，有人能帮你”或者“不，没答案”。</p>
+<h3 id="7-按时间顺序列出症状">7、按时间顺序列出症状</h3>
+<p>对找出问题最有帮助的线索，往往就是问题发生前的一系列操作，因此，你的说明应该包含操作步骤，以及电脑的反应，直到问题产生。</p>
+<p>如果你的说明很长（超过四个段落），在开头简述问题会有所帮助，接下来按时间顺序详述。这样别人就知道该在你的说明中找什么。</p>
+<h3 id="8-明白你想问什么">8、明白你想问什么</h3>
+<p>漫无边际的提问近乎无休无止的时间黑洞。最能给你有用答案的人也正是最忙的人（他们忙是因为要亲自完成大部分工作）。这样的人对无节制的时间黑洞不太感冒，因此也可以说他们对漫无边际的提问不大感冒。</p>
+<p>如果你明确表述需要回答者做什么（提供建议，发送一段代码，检查你的补丁或是别的），就最有可能得到有用的答案。这会定出一个时间和精力的上限，便 于回答者集中精力来帮你，这很奏效。要理解专家们生活的世界，要把专业技能想象为充裕的资源，而回复的时间则是贫乏的资源。解决你的问题需要的时间越少， 越能从忙碌的专家口中掏出答案。</p>
+<p>因此，优化问题的结构，尽量减少专家们解决它所需要的时间，会有很大的帮助–这通常和简化问题有所区别。因此，问 “我想更好的理解X，能给点提示吗？” 通常比问 “ 你能解释一下X吗？” 更好。如果你的代码不能工作，问问它有什么地方不对，比要求别人替你修改要明智得多。</p>
+<h3 id="9-提问之前">9、提问之前</h3>
+<p>你有时会得到诸如&quot;RTFM&quot;或&quot;STFW&quot;的回答，所以为什么不在提问之前试试这么做呢? 请在提问之前先确保你已经阅读过文档并在搜索引擎中寻找过答案了。</p>
+<h2 id="三-注意事项">三、注意事项</h2>
+<h3 id="1-提问没有人回答">1、提问没有人回答</h3>
+<p>如果仍得不到答案，请不要以为我们觉得无法帮助你。有时只是看到你问题的人不知道答案罢了。没有回应不代表你被忽视，虽然不可否认这种差别很难区分。</p>
+<p>总的说来，简单的重复张贴问题是个很糟的想法。这将被视为无意义的喧闹。</p>
+<p>你可以通过其它渠道获得帮助，这些渠道通常更适合初学者的需要。有许多网上的以及本地的用户组，由狂热的软件爱好者（即使他们可能从没亲自写过任何软件）组成。通常人们组建这样的团体来互相帮助并帮助新手。</p>
+<h3 id="2-谦逊绝没有害处而且常帮大忙">2、谦逊绝没有害处，而且常帮大忙</h3>
+<p>彬彬有礼，多用“请”和“先道个谢了”。让大家都知道你对他们花费时间义务提供帮助心存感激。然而，如果你有很多问题无法解决，礼貌将会增加你得到有用答案的机会。</p>
+<h3 id="3-问题解决后加个简短说明">3、问题解决后，加个简短说明</h3>
+<p>问题解决后，向所有帮助过你的人发个说明，让他们知道问题是怎样解决的，并再一次向他们表示感谢。</p>
+<p>如果问题在新闻组或者邮件列表中引起了广泛关注， 应该在那里贴一个补充说明。补充说明不必很长或是很深入；简单的一句“你好，原来是网线出了问题！谢谢大家–Bill”比什么也不说要强。事实上，除非结论真的很有技术含量，否则简短可爱的小结比长篇学术论文更好。说明问题是怎样解决的，但大可不必将解决问题的过程复述一遍。除了表示礼貌和反馈信息以外， 这种补充有助于他人在邮件列表/新闻组/论坛中搜索对你有过帮助的完整解决方案，这可能对他们也很有用。最后这种补充有助于所有提供过帮助的人从中得到满足感。</p>
+<h3 id="4-还是不懂">4、还是不懂</h3>
+<p>如果你不是很理解答案，别立刻要求对方解释。象你以前试着自己解决问题时那样（利用手册，FAQ，网络，身边的高手），去理解它。如果你真的需要对 方解释，记得表现出你已经学到了点什么。比方说，如果我回答你：“看来似乎是zEntry被阻塞了；你应该先清除它。”，然后：一个很糟的后续问题： “zEntry是什么？” 聪明的问法应该是这样：“哦~我看过帮助了但是只有-z和-p两个参数中提到了zEntry而且还都没有清楚的解释:&lt;你是指这两个中的哪一个 吗？还是我看漏了什么？”<br>
+四、最重要的是要做到精确。程序员喜欢精确。</p>
+<h4 id="精确">精确!</h4>
+<p>如果做相同的事情有两种方法，请说明您用的是哪一种。例如：“我选择了‘载入’”，可能意味着“我用鼠标点击‘载入’”或“我按下了‘ALT+L’”，说清楚您用了哪种方法，有时候这也有关系。</p>
+<h4 id="详细">详细!</h4>
+<p>信息宁多毋少！如果您说了很多，程序员可以略去一部分，可是如果您说的太少，他们就不得不回过头再去问您一些问题。有一次我收到了一份bug报告只有一句话，每一次我问他更多事情时，他每次的回复都是一句话，于是我花了几个星期的时间才得到了有用的信息。</p>
+<h4 id="谨慎使用代词">谨慎使用代词!</h4>
+<p>诸如“它”，“窗体”这些词，当它们指代不清晰的时候不要用。来看看这句话：“我运行了FooApp，它弹出一个警告窗口，我试着关掉它，它就崩溃 了。”这种表述并不清晰，用户究竟关掉了哪个窗口？是警告窗口还是整个FooApp程序？您可以这样说，“我运行FooApp程序时弹出一个警告窗口，我 试着关闭警告窗口，FooApp崩溃了。”这样虽然罗嗦点，但是很清晰不容易产生误解。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[区块链到底是什么?]]></title>
+        <id>https://www.kainhao.site/what-is-blockchain/</id>
+        <link href="https://www.kainhao.site/what-is-blockchain/">
+        </link>
+        <updated>2021-10-29T11:16:11.000Z</updated>
+        <summary type="html"><![CDATA[<h1 id="0x00-写在前面">0x00 写在前面</h1>
+<p>区块链这东西提出来也十多年了, 有些人将其视作<code>第四次工业革命的底层技术</code>, 但是绝大多数人仍然对这个概念一无所知, 那今天就来跟大伙聊聊——到底啥叫区块链啊??</p>
+]]></summary>
+        <content type="html"><![CDATA[<h1 id="0x00-写在前面">0x00 写在前面</h1>
+<p>区块链这东西提出来也十多年了, 有些人将其视作<code>第四次工业革命的底层技术</code>, 但是绝大多数人仍然对这个概念一无所知, 那今天就来跟大伙聊聊——到底啥叫区块链啊??</p>
+<!-- more -->
+<hr>
+<h1 id="0x01-从信用中介谈起">0x01 从信用中介谈起</h1>
+<p>信用中介这玩意听起来挺高大上, 实际说起来谁也不陌生——借贷关系中为双方提供担保的人/机构. 比如小松问你借钱, 你没有钱, 于是你去找了小梅借钱. 这个时候你需要向小梅担保小松一定会还钱, 所以信用中介一定需要有足够的信用度才能成为信用中介. 但是在实际的借贷关系中, 信用中介都是有成本的——不挣钱这事谁干啊?? 所以在离不开借贷关系的现代经济中, 为成本埋单的就是所有人——现在你知道为什么华尔街这么有钱了吧?</p>
+<figure data-type="image" tabindex="1"><img src="https://s-bj-2262-blog.oss.dogecdn.com/%E4%BF%A1%E7%94%A8%E4%B8%AD%E4%BB%8B.png" alt="借贷关系的示意图" loading="lazy"></figure>
+<p>于是有人开始琢磨了——<strong>如何尽可能降低这种成本呢?</strong></p>
+<p>从上面这张图可以很明显看出来这种借贷关系的中心——信用中介. 那好办了嘛, 要不让它消灭成本, 要么我们消灭它. 俗话说得好, 断人财路杀人父母, 让信用中介消灭成本是不可能的, 那我们消灭它好了——于是诞生了<code>去中心化</code>这种思想. 既然让一个中心担保不可能, 那我们让一堆人来担保不就可以了嘛.</p>
+<p><em>冷知识: P2P借贷其实也是基于去中心化的思想, 只不过少了最关键的一步——担保. 所以P2P借贷平台总是暴雷的原因很大一部分要归功于不守信用的借款人</em></p>
+<p>说对了. 让大家都为所有交易担保, 这就是区块链技术的核心.</p>
+<p>第一个实践这种思想的人叫中本聪(Satoshi Nakamoto), 对, 就是发明比特币的那个人.</p>
+<p><em>热知识: 区块链其实是作为比特币的底层技术被提出的</em></p>
+<hr>
+<h1 id="0x02-区块链还得看老祖宗-比特币交易流程浅析">0x02 区块链还得看老祖宗: 比特币交易流程浅析</h1>
+<p>我们现在假设小C和小H都有一个比特币地址(地址是怎么实现的呢?后面再说, 你现在可以把它视为银行卡号码之类的东西), 现在小H要向小C付一笔比特币, 交易流程是这样的:</p>
+<p>小H的比特币客户端经过一番计算后把交易申请在整个比特币网络上进行广播, 让整个网络上的人(其实是参与记账的节点, 又叫做<code>矿工</code>)承认这笔交易有效.</p>
+<p>矿工验证过这笔交易后, 将其记在账簿(一种运行在所有节点上的分布式数据库, 专门用来记录交易)上. 一旦被记录就不可更改不可销毁(为什么呢?后面再说)</p>
+<p>现在有三个矿工(小X, 小Z和小Y), 他们收到了小H向小C的交易申请的广播和其他的交易广播, 他们运行的比特币挖矿程序会自动将过去约10min的交易打包成一个新的交易区块并计算基于该区块、上一个区块的某个数据和随机数的一个数据(计算了啥呢?后面再说). 最先计算出的矿工会得到系统规定的某个数量的比特币作为奖励.</p>
+<p>然后矿工会把这个区块盖上时间戳向全网广播, 其他矿工再验证.</p>
+<p>综上, 比特币系统有以下几个优点:</p>
+<ul>
+<li>
+<p>无需三方信用中介, 每个人都是信用中介.</p>
+</li>
+<li>
+<p>因为每个区块都基于上一个区块, 不可销毁, 不可更改, 不可伪造.</p>
+</li>
+<li>
+<p>供应有限(众所周知, 比特币上限数量为2100万个*(实际上可以分割成百万分之一个比特币, 又称Satoshi)*), 防止通胀(这也是为什么比特币被叫做数字黄金)</p>
+</li>
+</ul>
+<p><strong>但是</strong>...:</p>
+<ul>
+<li>比特币交易确认时间过长, 一般认为每等待六个区块后可以确认交易不可逆, 但是每10min产生一个区块, 这样等待一笔交易确认就需要1h的时间.</li>
+<li>工作量证明机制过于单一, 理论上对比特币发动51%算力攻击也是可行的(参见后文)</li>
+<li>区块容量. 完全节点有硬性的物理尺寸限制(每个区块最大1MB), 所以每10min产生1MB的区块, 通过计算可以得出限制大约是每秒7笔交易, 每天600000笔交易, 当达到这个阈值时, 没确认的交易会延长确认时间.</li>
+<li>图灵性差(参见后文)</li>
+</ul>
+<p><strong>那矿工们打包区块的时候, 到底计算了啥呢?</strong></p>
+<p>他们计算了本区块 + 上一个区块的SHA256值 + 随机数的<strong>SHA256值</strong>.</p>
+<p>那是啥? 让我们先来看看密码学上的经典——散列算法.</p>
+<p>哈希算法(<code>Hash Algorithm</code>)又称散列算法或摘要算法(<code>Digest Algorithm</code>), 是不可逆(事实上可以逆向, 但是现代哈希算法逆向所需要的工作量极高)且极难预测的算法. 它可以对任意输入进行计算得到固定长度的输出摘要. 通过得当的算法设计, 哈希算法可以做到两个特点:</p>
+<ul>
+<li>相同输入, 输出一定相同.</li>
+<li>不同输入, 输出极大概率不同.</li>
+</ul>
+<p>哈希算法的目的就是为了验证原始数据是否被篡改.</p>
+<p>所以当你拿到一组数据和它的摘要的时候, 通过相同的摘要算法就可验证数据是否经过改动.</p>
+<p>SHA256就是一种密码散列函数算法标准. 由于算法是公开的, 所有人都可以验证这个区块数据的可信程度. 而由于每个区块由基于上一个区块的SHA256值, 当你改动这个区块时, 势必要改动上一个区块的数据, 而上一个区块又基于上上个区块...这么相互链接成一条链直到第一个区块(有时也叫<code>创世区块</code>), 所以叫<strong>区块链</strong>.</p>
+<p>计算散列对于现代计算机来说很容易, 但是比特币系统要求新的散列值拥有特定格式——以特定数量的0开始, 由于SHA256算法极难预测, 所以矿工必须用不同的随机数计算出许多摘要, 直到获得正确的那个.</p>
+<p>以上过程统称为——<strong>挖矿</strong>.</p>
+<h1 id="0x03-钱包-地址-私钥和公钥">0x03 钱包、地址, 私钥和公钥</h1>
+<p>钱包是一种文件, 可以让用户访问多个比特币地址.</p>
+<p>比特币地址是类似银行卡号码的东西, 是一串由字母和数字组成的字符串.</p>
+<p><em>热知识: 比特币和银行卡的工作机制非常不同, 比特币用户可以任意创建地址, 这样做是被鼓励的——用于增强匿名性和隐私性</em></p>
+<p>每一个地址都有自己的比特币余额(也就UTXO, 参见下文.) 当小H创建一个新地址时, 小H实际上是在生成一个密钥对. 这对密钥由一个公钥和一个私钥组成. 私钥只有小H知道且与小H的钱包文件绑定, 而对应的公钥每个矿工都了解. 当小H用私钥对一个消息进行签名, 所有持有公钥的人都能验证它.</p>
+<p>当小H申请交易时, 他的客户端用此地址的私钥签名这一交易申请, 而所有矿工都会验证这一申请——用公钥.</p>
+<h1 id="0x04-utxo">0x04 UTXO</h1>
+<p>大家都在电脑上用过复制的功能吧? 因为数据是可以复制的, 所以同一笔数字资产可能被交易两次. 在一般的中心化交易网络(就是你和银行和其他人)中, 一般通过实时修改账户余额来实现.</p>
+<p>但由于不存在一般意义上的中心, 比特币创造性地整合了时间戳和工作量证明机制, 还发明了UTXO(<code>Unspent Transaction Outputs</code>,未使用的交易输出)机制. 具体来说就是这样的:</p>
+<p>假设小H有 8 个比特币, 这其实意味着, 之前有一个交易把这些比特币转入小H的地址, 这个交易的输出（即 8 个比特币）未被使用, 小H拥有了这 8 个比特币.</p>
+<p>现在, 小H要发起一个转账交易, 这个交易中的输入是让小H拥有这些比特币的上一个交易.</p>
+<p>小H要转账给小C 7 个比特币, 小H所做的是, 对让他拥有这些 8 个比特币的上一个交易进行签名, 把这一新转账交易的输出地址设为小C的钱包地址.  这样, 小H就发起了一个转账支付交易(银行卡的支付方式通常是——确认小H的余额并在小H的余额中减100, 在小C的余额中加100; 而UTXO的机制则是不管怎样必须消耗完UTXO, 即从UTXO中转出 7 个比特币支付给小C并转出一个给小H(这一个会成为新的UTXO)). 等矿工将这一交易打包进新的区块, 转账交易完成, 这 8 个比特币就属于你了. 小C拥有的是他们两个这次交易的未使用的交易输出(UTXO).</p>
+<p>UTXO与帐本系统深度耦合, 不需要向上追溯每一笔交易, 只需要确认上一笔交易可信.</p>
+<p>这样一个好处就是, 如果从第一个区块开始逐步计算所有比特币地址中的余额, 就可以计算出不同时间的各个比特币账户的余额了.</p>
+<h1 id="0x05-双花问题和51算力攻击">0x05 双花问题和51%算力攻击</h1>
+<p>双花问题, 就是一笔资产被两次使用. 在一般的中心化交易网络中, 一般通过实施更改账户余额来避免双重支付. 但是在比特币系统中, 我们使用时间戳、工作量证明机制和UTXO模型来解决问题.</p>
+<p>当一个区块被挖掘出来时, 挖矿人会在记录交易信息的同时, 为区块添加时间信息. 后续的区块一般晚于之前的区块, 这样使得交易可以按时序记录. 而工作量证明机制确保矿工不能随意生成区块, 而必须提供算力来解决一定问题才能争夺记账权力, 每个区块都有各自的哈希值, 这个数值取决于上一个区块的散列值和此区块包含的交易信息. 如果想让一笔钱双花, 那么必须先等包含正常交易信息的区块放入链中, 再从消费之前的某点开始竞争计算一条新链, 由于新生区块的内容有差异, 区块链从差异节点产生分支. 根据比特币网络承认<code>最长链</code>的特性, 新链中区块的生成速度必须高于原链才能使原链作废. 要做到比原链计算速度更快, 攻击节点的综合算力必须达到网络总算力的51%.</p>
+<p><em>这是显而易见的. 当有50%的算力都归攻击节点时, 两条链的生成速度是相同的.</em></p>
+<h1 id="0x06-分布式系统的幽灵拜占庭将军问题">0x06 分布式系统的幽灵——拜占庭将军问题</h1>
+<blockquote>
+<p>It is not sufficient that everyone knows X. We also need everyone to  know that everyone knows X, and that everyone knows that everyone knows  that everyone knows X - which, as in the Byzantine Generals problem, is  the classic hard problem of distributed data processing.<br>
+（译文：所有人都知道X是不够的。我们还需要所有人都知道所有人都知道X，以及所有人都知道所有人都知道所有人都知道X，就像是在拜占庭将军问题里的那样——这是个分布式数据处理中的经典的困难问题。）<br>
+——James A. Donald</p>
+</blockquote>
+<p>关于拜占庭将军问题, 一个简易的非正式描述如下<sup>1</sup>:</p>
+<p>东! **罗! 马! **帝国(即拜占庭帝国)想要进攻一个强大的敌国, 为此派出了10支军队去包围敌国, 敌国虽不比拜占庭帝国更为强大, 但也足以抵御五只拜占庭军队的同时袭击. 由于某些原因, 这十支军队必须分开同时进攻, 他们任何一支单独进攻都毫无胜算, 除非至少六支军队同时进攻. 这些军队依靠通信兵相互通信来协商进攻意向和进攻时间. 困扰这些将军的问题是, 他们不确定他们当中是否有叛徒, 因为叛徒可能擅自变更进攻意向或者进攻时间. 他们能否找到一种分布式的协议让他们能够远程协商从而赢取战斗?</p>
+<p>在这里我们仅讨论一种简单的情况, 有兴趣的读者可以自行阅读原始文献(见References)</p>
+<p>当将军总数n=3, 叛徒数m=1时.</p>
+<p>这时，我们希望：</p>
+<ol>
+<li>如果指挥官是诚实的，那么诚实的将军必须听从指挥官的命令。</li>
+<li>如果指挥官是叛徒，那么两个诚实的将军必须做出一致的决定。</li>
+</ol>
+<p>也许很多人都已经知道，这个问题是无解的，原因如下：</p>
+<ol>
+<li>将军收到“进攻”的指令的时候，他不能直接做出“进攻”的判定，因为指挥官可能是叛徒。</li>
+<li>于是将军收到指令之后，它必须向另一名将军询问指挥官给另一名将军的指令。</li>
+<li>假设这个时候将军从指挥官那收到了“进攻”，而另一名将军却告诉他“指挥官跟我说的是撤退”。而这个时候，这位将军就会陷入一个困境：第一种可能是，指挥官是诚实的并且向两个将军都下达了“进攻”的指令，但是另一名将军是叛徒并且篡改了指挥官的命令；而另一种可能是，指挥官是叛徒并且向两个将军各下达了不同的指令。作为这位可怜的将军，他无法分别这两种情况。</li>
+<li>这里来到了问题的重点：我们并不关心他的决定究竟是“进攻”还是“撤退”，我们关心的是，如果我们预设任何一种战术，例如：遇到上述情况时选择“进攻”（“撤退”），它能在某一种可能的时候达成目标，但是在另一种可能的时候失效。</li>
+</ol>
+<p>这只是对口头协议下拜占庭将军问题的一个简单分析, 关于区块链的共识问题我打算单独用一篇文章来介绍一下. 算是抛砖引玉, 有错误的地方还劳驾赐教.</p>
+<h1 id="0x07-关于eth的简单介绍">0x07 关于ETH的简单介绍</h1>
+<p>自2008年比特币出现以来, &quot;加密货币&quot;的存在已经渐渐为一部分人所接受. 人们也积极开展了基于比特币的商业应用的思考与开发. 但随着应用的扩展, 人们发现比特币的设计只适合&quot;虚拟货币&quot;场景, 由于存在非图灵完备性(简单理解就是程序过于简单, 不支持在比特币网络上运行复杂的程序), 缺少保存状态的账户概念等问题, 在很多区块链应用场景下并不适用. 人们需要一个新的基于区块链的具有图灵完备性、高效共识机制、支持更多应用场景的智能合约开发平台, 以太坊(<code>Ethereum</code>)应运而生.</p>
+<p>以太坊是运行在一个个计算机网络中的软件, 它确保数据以及被称为<strong>智能合约</strong>的小程序可以在没有中心协调者的情况下被所有网络中的计算机复制和处理. 以太坊的愿景是创建一个无法停止、抗审查和自我维持的去中心化世界计算机. 他眼神了比特币的区块链概念: 在全球范围的多个计算机上验证、储存和复制交易数据(分布式账本). 以太坊在这个概念上更进一步, 是在全球范围内的多个计算机上运行代码成为现实.</p>
+<p>以太坊的目的是对脚本、竞争币和链上元协议进行整合和提高, 使开发者能够创建任意的基于共识的、可扩展的、标准化的、图灵完备的、易于开发和协同的应用(即DApp)</p>
+<p>从架构角度而言, DApp非常类似于传统的Web应用. 在一个DApp中, 它的智能逻辑运行在区块链上, 客户端代码运行在特殊浏览器Mist里面. 因此, 以太坊技术同时分为平台(以太坊)、数字货币(以太币)和编程语言(Solidity或Ether Script)</p>
+<h1 id="references">References</h1>
+<p>1: [1] Lamport L ,  Shostak R ,  Pease M . The Byzantine Generals Problem[J]. ACM Transactions on Programming Languages and Systems, 1982, 4(3).</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Hello Gridea]]></title>
+        <id>https://www.kainhao.site/hello-gridea/</id>
+        <link href="https://www.kainhao.site/hello-gridea/">
+        </link>
+        <updated>2020-04-21T16:00:00.000Z</updated>
+        <summary type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
+✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
+✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
+<!-- more -->
+<p><a href="https://github.com/getgridea/gridea">Github</a><br>
+<a href="https://gridea.dev/">Gridea 主页</a><br>
+<a href="http://fehey.com/">示例网站</a></p>
+<h2 id="特性">特性👇</h2>
+<p>📝  你可以使用最酷的 <strong>Markdown</strong> 语法，进行快速创作</p>
+<p>🌉  你可以给文章配上精美的封面图和在文章任意位置插入图片</p>
+<p>🏷️  你可以对文章进行标签分组</p>
+<p>📋  你可以自定义菜单，甚至可以创建外部链接菜单</p>
+<p>💻  你可以在 <strong>Windows</strong>，<strong>MacOS</strong> 或 <strong>Linux</strong> 设备上使用此客户端</p>
+<p>🌎  你可以使用 <strong>𝖦𝗂𝗍𝗁𝗎𝖻 𝖯𝖺𝗀𝖾𝗌</strong> 或 <strong>Coding Pages</strong> 向世界展示，未来将支持更多平台</p>
+<p>💬  你可以进行简单的配置，接入 <a href="https://github.com/gitalk/gitalk">Gitalk</a> 或 <a href="https://github.com/SukkaW/DisqusJS">DisqusJS</a> 评论系统</p>
+<p>🇬🇧  你可以使用<strong>中文简体</strong>或<strong>英语</strong></p>
+<p>🌁  你可以任意使用应用内默认主题或任意第三方主题，强大的主题自定义能力</p>
+<p>🖥  你可以自定义源文件夹，利用 OneDrive、百度网盘、iCloud、Dropbox 等进行多设备同步</p>
+<p>🌱 当然 <strong>Gridea</strong> 还很年轻，有很多不足，但请相信，它会不停向前 🏃</p>
+<p>未来，它一定会成为你离不开的伙伴</p>
+<p>尽情发挥你的才华吧！</p>
+<p>😘 Enjoy~</p>
+]]></content>
+    </entry>
+</feed>

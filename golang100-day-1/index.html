@@ -1,0 +1,518 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>KainHao的蓼苇岛</title>
+<meta name="description" content="每一个不曾起舞的日子，都是对生命的辜负。" />
+<link rel="shortcut icon" href="https://www.kainhao.site/favicon.ico?v=1674012493822">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+
+<link rel="stylesheet" href="https://www.kainhao.site/styles/main.css">
+<!-- <script src="https://s2.pstatp.com/cdn/expire-1-M/valine/1.4.14/Valine.min.js"></script> -->
+
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main px-4 flex flex-col lg:flex-row">
+      <div id="sidebar" class="sidebar-wrapper lg:static lg:w-1/4">
+  <div class="lg:sticky top-0">
+    <div class="sidebar-content">
+      <div class="flex lg:block p-4 lg:px-0 items-center fixed lg:static lg:block top-0 right-0 left-0 bg-white z-50">
+        <i class="ri-menu-2-line lg:mt-4 text-2xl cursor-pointer animated fadeIn" onclick="openMenu()"></i>
+        <a href="https://www.kainhao.site">
+          <img class="animated fadeInLeft avatar rounded-lg mx-4 lg:mt-32 lg:mx-0 mt-0 lg:w-24 lg:h-24 w-12 w-12" src="https://www.kainhao.site/images/avatar.png?v=1674012493822" alt="">
+        </a>
+        <h1 class="animated fadeInLeft lg:text-4xl font-extrabold lg:mt-8 mt-0 text-xl" style="animation-delay: 0.2s">KainHao的蓼苇岛</h1>
+      </div>
+      
+        <div class="animated fadeInLeft" style="animation-delay: 0.4s">
+          <p class="my-4 text-gray-600 font-light hidden lg:block">
+            文章目录
+          </p>
+          <div class="toc-container hidden lg:block">
+            <ul class="markdownIt-TOC">
+<li><a href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%AD%A6%E4%B9%A0go">为什么要学习Go?</a></li>
+<li><a href="#%E5%85%B3%E4%BA%8E-go-%E7%9A%84%E5%AD%A6%E4%B9%A0%E6%88%90%E6%9C%AC">关于 Go 的学习成本?</a>
+<ul>
+<li><a href="#go-%E7%9A%84%E5%AD%A6%E4%B9%A0%E6%88%90%E6%9C%AC">Go 的学习成本</a></li>
+<li><a href="#java-%E7%9A%84%E5%AD%A6%E4%B9%A0%E6%88%90%E6%9C%AC">Java 的学习成本</a></li>
+</ul>
+</li>
+<li><a href="#0x01-%E7%8E%AF%E5%A2%83%E4%BB%85%E8%AF%AD%E8%A8%80%E5%AE%89%E8%A3%85%E4%B8%8Ehello-world">0x01 环境(仅语言)安装与Hello World</a>
+<ul>
+<li><a href="#linux-%E4%B8%8B%E5%AE%89%E8%A3%85">Linux 下安装</a></li>
+<li><a href="#windows-%E4%B8%8B%E5%AE%89%E8%A3%85">Windows 下安装</a></li>
+<li><a href="#hello-world">Hello World!</a></li>
+</ul>
+</li>
+<li><a href="#0x02-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B">0x02 数据类型</a></li>
+<li><a href="#0x03-%E5%8F%98%E9%87%8F%E4%B8%8E%E5%B8%B8%E9%87%8F">0x03 变量与常量</a>
+<ul>
+<li><a href="#%E5%8F%98%E9%87%8F">变量</a>
+<ul>
+<li><a href="#%E5%A3%B0%E6%98%8E">声明</a></li>
+<li><a href="#%E8%B5%8B%E5%80%BC">赋值</a></li>
+</ul>
+</li>
+<li><a href="#%E5%B8%B8%E9%87%8F">常量</a>
+<ul>
+<li><a href="#%E5%A3%B0%E6%98%8E-2">声明</a></li>
+<li><a href="#iota">Iota</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#0x04-%E8%BF%90%E7%AE%97">0x04 运算</a>
+<ul>
+<li><a href="#%E7%AE%97%E6%9C%AF%E8%BF%90%E7%AE%97%E7%AC%A6">算术运算符</a></li>
+<li><a href="#%E9%80%BB%E8%BE%91%E4%B8%8E%E5%85%B3%E7%B3%BB%E8%BF%90%E7%AE%97%E7%AC%A6">逻辑与关系运算符</a>
+<ul>
+<li><a href="#%E5%85%B3%E7%B3%BB%E8%BF%90%E7%AE%97%E7%AC%A6">关系运算符</a></li>
+<li><a href="#%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E7%AC%A6">逻辑运算符</a></li>
+</ul>
+</li>
+<li><a href="#%E8%B5%8B%E5%80%BC%E8%BF%90%E7%AE%97%E7%AC%A6">赋值运算符</a></li>
+</ul>
+</li>
+<li><a href="#0x05-%E5%BE%AA%E7%8E%AF">0x05 循环</a></li>
+<li><a href="#%E4%BB%A3%E7%A0%81%E4%BB%93%E5%BA%93%E5%92%8C%E4%B8%80%E4%BA%9B%E9%A2%98%E5%A4%96%E8%AF%9D">代码仓库和一些题外话</a></li>
+<li><a href="#references">References</a></li>
+</ul>
+
+          </div>
+        </div>
+      
+    </div>
+  </div>
+</div>
+
+<div class="menu-container">
+  <i class="ri-arrow-left-line text-2xl cursor-pointer animated fadeIn close-menu-btn" onclick="closeMenu()"></i>
+  <div>
+    
+      
+        <a href="/" class="menu" style="animation-delay: 0s">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu" style="animation-delay: 0.2s">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu" style="animation-delay: 0.4s">
+          标签
+        </a>
+      
+    
+      
+        <a href="/essayistic-gossip" class="menu" style="animation-delay: 0.6000000000000001s">
+          碎笔
+        </a>
+      
+    
+  </div>
+  <div class="site-footer">
+    <div class="py-4 text-gray-700">All content on this site is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0 </a> agreement. <br />
+Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a></div>
+    <a class="rss" href="https://www.kainhao.site/atom.xml" target="_blank">RSS</a>
+  </div>
+</div>
+<div class="mask" onclick="closeMenu()">
+</div>
+      <div class="content-wrapper py-32 lg:p-8 lg:w-3/4 post-detail animated fadeIn">
+        <h1 class="text-3xl font-bold lg:mt-16">Golang一百天 | Day 1</h1>
+        <div class="text-sm text-gray-700 lg:my-8">
+          2021-11-13 / 8 min read
+        </div>
+        
+          <img class="post-feature-image rounded-lg mx-auto my-4" src="https://s-bj-2262-blog.oss.dogecdn.com/pexels-rakicevic-nenad-1274260.jpg" alt="">
+        
+        <div class="post-content yue">
+          <h1 id="为什么要学习go">为什么要学习Go?</h1>
+<p>这次我要给个稍微不正经一点的答案:</p>
+<p>不必纠结于这个问题, 到头来你会发现所有主流语言你都得学一遍.</p>
+<!-- more -->
+<h1 id="关于-go-的学习成本">关于 Go 的学习成本?</h1>
+<h2 id="go-的学习成本">Go 的学习成本</h2>
+<pre><code class="language-go">package main
+
+func main() {
+    println(&quot;Hello World&quot;)
+}
+</code></pre>
+<blockquote>
+<p>一共 <strong>57</strong> 个字符</p>
+</blockquote>
+<h2 id="java-的学习成本">Java 的学习成本</h2>
+<pre><code class="language-java">class main {
+    public static void main(String[] args) {
+        System.out.println(&quot;Hello World&quot;);
+    }
+}
+</code></pre>
+<blockquote>
+<p>一共 <strong>112</strong> 个字符<sup><a href="#References">1</a></sup></p>
+</blockquote>
+<h1 id="0x01-环境仅语言安装与hello-world">0x01 环境(仅语言)安装与Hello World</h1>
+<p>别再问我IDE去哪里了, 我个人喜欢使用VIM和<a href="https://www.jetbrains.com/go/">GoLand</a>, VSCode也可以hhh</p>
+<p>对于懒得折腾IDE的同学, 推荐在 https://cloudstudio.net/ 中直接创建预装了Go 1.16.7的环境.</p>
+<h2 id="linux-下安装">Linux 下安装</h2>
+<p>懒, 咕, 等个大佬来补</p>
+<h2 id="windows-下安装">Windows 下安装</h2>
+<p>在<a href="https://golang.google.cn/dl/">https://golang.google.cn/dl/</a>下选择<a href="https://golang.google.cn/dl/go1.16.3.windows-amd64.msi">go1.16.3.windows-amd64.msi</a>, 然后根据引导.</p>
+<p><em>你可以将C:\Go\bin添加到Path变量中, 方便在命令行环境中调试, 但是我仍然推荐在Linux中进行学习和开发</em></p>
+<h2 id="hello-world">Hello World!</h2>
+<p>然后创建新目录, 命名为<code>golang-100</code> , 在其下新建<code>hello_world.go</code>, 写入以下内容:</p>
+<pre><code class="language-go">package main
+
+import &quot;fmt&quot;
+
+func main(){
+    /* Hello World */
+    // Hello World
+    /*
+    	Hello World
+    				*/
+    print(&quot;Hello World\n&quot;)
+    fmt.Println(&quot;Hello World!&quot;)
+}
+</code></pre>
+<p>然后执行<code>go run hello_world.go</code> , 你应该看到以下结果:</p>
+<blockquote>
+<p>Hello World!<br>
+Hello World!</p>
+</blockquote>
+<p>我们来解析一下上面的代码:</p>
+<p>首先, <code>package main</code>是声明包名, 一个合格的Go程序应该在源代码中非注释的第一行声明包名, 另外, 每个Go程序都应包括一个<code>main</code>包.</p>
+<p>然后, <code>import &quot;fmt&quot;</code>引入了<em>fmt</em>包, 这个包实现了格式化输入输出.</p>
+<p>然后<code>func main()</code>定义了<code>main</code>函数. 和C一样, main函数是每一个程序所必须包含的. 它应该是<code>init</code>函数*(如果有的话)*后第一个执行的.</p>
+<p><em><code>{}</code>不可以单行出现, 它必须出现在函数声明的右括号的后方.</em></p>
+<p>然后是注释行. 对于单行注释, 你可以使用<code>/* */</code>或<code>//</code>, 注释块则使用<code>/* */</code>, 切记不可嵌套使用.</p>
+<p>接着我们来到了两行输出.</p>
+<p>GoLang官方给出的关于<code>print</code>函数的说明是这样的:</p>
+<blockquote>
+<p>... and writes the result to standard error.</p>
+</blockquote>
+<p>也就是说<code>print</code>在Go中输出到标准错误流中并打印,官方不建议在标准开发时使用, 在debug时用一用还是可以的hhh~~(Python开发者觉得很赞)~~, 而<code>fmt.print</code>(或<code>fmt.Println</code>(输出后换行))属于标准输出流. 在接下来的笔记中, 我们将统一使用<code>fmt.Println</code></p>
+<p>所以一个合格的Go程序必须包含如下部件:</p>
+<ul>
+<li>包声明</li>
+<li>引入</li>
+<li><strong>(非常重要)注释!!</strong></li>
+<li>函数</li>
+<li>语句</li>
+</ul>
+<hr>
+<h1 id="0x02-数据类型">0x02 数据类型</h1>
+<p><s>每个竞赛生最讨厌的一节课</s></p>
+<p>Golang的数据类型与其他语言基本无异, 主要包括以下类型</p>
+<ul>
+<li>Boolean型. 又称布尔型,包括且仅包括true和false.</li>
+<li>Int型. 整型, 基于架构的类型来讲包括uint8,uint16,uint32,uint64(无符号)和int8,int16,int32,int64(有符号)</li>
+<li>Float型. 浮点型, 支持32/64位浮浮点(float32, float64)和32/64实数和虚数(complex32, complex64)</li>
+<li>String型. 字符串.</li>
+<li>其他类型,包括指针,数组,Channel,函数...</li>
+</ul>
+<h1 id="0x03-变量与常量">0x03 变量与常量</h1>
+<h2 id="变量">变量</h2>
+<h3 id="声明">声明</h3>
+<p>Go语言的变量名可以由字母、下划线与数字组成, 需要注意的是不能以数字开始.</p>
+<p>声明变量一般使用<code>var</code>关键字, 如下所示:</p>
+<pre><code class="language-go">/* variable_1.go */
+package main
+
+import &quot;fmt&quot;
+
+func main(){
+    var this_is_a_string string = &quot;String&quot;
+	var this_is_int_1, this_is_int_2 int = 70, 615
+
+	fmt.Println(this_is_a_string, this_is_int_1, this_is_int_2)
+}
+</code></pre>
+<p>在声明变量时若是没有指定值(未初始化), 则其默认值将为零值.(对于Boolean型, 零值为False; 对于String型, 零值为空(&quot;&quot;))</p>
+<p>你也可以让编译器根据你指定的值自行判断类型:</p>
+<pre><code class="language-go">/* variable_2.go */
+package main
+
+import &quot;fmt&quot;
+
+func main(){
+    var a = 1
+    var b = true
+    fmt.Println(a, b)
+}
+</code></pre>
+<p>或者再简洁一点,直接省略掉<code>var</code>, 使用<code>:=</code>声明新变量:</p>
+<pre><code class="language-go">/* variable_3.go */
+package main
+
+import &quot;fmt&quot;
+
+func main(){
+    a := 1
+    b := &quot;String&quot; //与 var b string = &quot;String&quot; 相同
+    fmt.Println(a, b)
+}
+</code></pre>
+<h3 id="赋值">赋值</h3>
+<p>与大部分语言相同, Go的赋值也使用<code>=</code>标识符:</p>
+<pre><code class="language-go">/* variable_4.go */
+package main
+
+import &quot;fmt&quot;
+
+func main(){
+    a := 1
+    fmt.Println(a)
+    b := a
+    a = 2
+    fmt.Println(a, b)
+}
+</code></pre>
+<h2 id="常量">常量</h2>
+<h3 id="声明-2">声明</h3>
+<p>我们使用<code>const</code>关键字来声明函数:</p>
+<pre><code class="language-go">/* constant_1.go */
+package main
+
+import &quot;fmt&quot;
+
+func main(){
+    /*
+    事实上, 把常量标识符全部用大写字母来表示绝对是一个好想法
+    */
+    const A string = &quot;String&quot;
+    const B = &quot;String&quot;
+    const C = 1
+    fmt.Println(A, B, C)
+}
+</code></pre>
+<p><code>const</code>也可以用作枚举:</p>
+<pre><code class="language-go">/* constant_2.go */
+package main
+
+import &quot;fmt&quot;
+
+func main(){
+    const(
+        A = &quot;String&quot;
+        B = 1
+    )
+}
+</code></pre>
+<h3 id="iota">Iota</h3>
+<p>iota是一个<s>特别神秘</s>特殊的常量, 通常被形容为&quot;可以被编译器修改&quot;.</p>
+<p>iota 在<code>const</code>关键字出现时将被重置为 0(<code>const</code>内部的第一行之前),<code>const</code>中每新增一行常量声明将使 iota 计数一次(iota 可理解为<code>const</code>语句块中的行索引).</p>
+<p>iota 只是在同一个 const 常量组内递增, 每当有新的 const 关键字时, iota 计数会重新开始.</p>
+<h1 id="0x04-运算">0x04 运算</h1>
+<h2 id="算术运算符">算术运算符</h2>
+<p>算术运算符还是老几样:</p>
+<ul>
+<li><code>+</code>: 相加</li>
+<li><code>-</code>: 相减</li>
+<li><code>*</code>: 相乘</li>
+<li><code>/</code>: 相除</li>
+<li><code>%</code>: 取模</li>
+<li><code>++</code>: 自加</li>
+<li><code>--</code>: 自减</li>
+</ul>
+<h2 id="逻辑与关系运算符">逻辑与关系运算符</h2>
+<h3 id="关系运算符">关系运算符</h3>
+<p><s>Python开发者狂喜</s></p>
+<ul>
+<li><code>==</code>: 相等时返回true</li>
+<li><code>!=</code>: 不等时返回true</li>
+<li><code>&gt;</code>: 大于时返回true</li>
+<li><code>&lt;</code>: 小于时返回true</li>
+<li><code>&gt;=</code>: 大于等于时返回true</li>
+<li><code>&lt;=</code>: 小于等于时返回返回true</li>
+</ul>
+<h3 id="逻辑运算符">逻辑运算符</h3>
+<ul>
+<li><code>&amp;&amp;</code>: 与运算符. 两边都为true时返回true</li>
+<li><code>||</code>: 或运算符. 两边中任意一个为true时返回true</li>
+<li><code>|</code>: 非运算符. 两边中都为False时返回true</li>
+</ul>
+<h2 id="赋值运算符">赋值运算符</h2>
+<ul>
+<li><code>==</code> : 赋值</li>
+<li><code>+=</code>: 相加后赋值</li>
+<li><code>-=</code>: 相减后赋值</li>
+<li><code>*=</code>: 相乘后赋值</li>
+<li><code>/=</code>: 相除后赋值</li>
+<li><code>%=</code>: 取模后赋值</li>
+</ul>
+<p><em>需要注意的是Go中自增(<code>++</code>)与自减(<code>--</code>)不能在赋值语句中使用, 只能以单独表达式的形式出现.</em></p>
+<h1 id="0x05-循环">0x05 循环</h1>
+<p>Go中使用<code>for</code>作为循环语句, 格式如下:</p>
+<pre><code class="language-go">/* circulate_1.go */
+package main
+
+import &quot;fmt&quot;
+/*
+这种格式的for语句形如for init(赋值表达式); condition(关系或逻辑表达式); post(赋值表达式{}, 与C中的for类似
+*/
+func main(){
+    a := 0
+    for i := 0; i &lt;= 100; i++{
+        a++
+        fmt.Println(a)
+    }
+    fmt.Println(a)
+}
+</code></pre>
+<pre><code class="language-go">/* circulate_2.go */
+package main
+
+import &quot;fmt&quot;
+/* 
+此种for语句形如for condition(关系或逻辑表达式){}
+*/
+func main(){
+    for true{
+        fmt.Println(&quot;按Cntl-C退出无限循环&quot;)
+    }
+}
+</code></pre>
+<hr>
+<h1 id="代码仓库和一些题外话">代码仓库和一些题外话</h1>
+<p>本文所有代码均可在https://paperfold.coding.net/public/golang-100/golang-100/git/files 中的 <code>day-1</code>目录中找到.</p>
+<p>因为写的比较匆忙所以一些细节没涉及到, 所以接下来预备用两篇讲变量和常量, 一篇讲数据类型, 一篇讲运算, 一篇讲循环.</p>
+<p>至于更新因为还有别的事所以看什么时候有时间写了...</p>
+<h1 id="references">References</h1>
+<p>1: 作者：海东喵 | 链接：https://www.zhihu.com/question/356471508/answer/946085756 | 来源：知乎</p>
+
+        </div>
+
+        
+          <a class="animated fadeInUp p-2 items-center text-sm text-gray-700 border hover:bg-gray-300 leading-none rounded-full flex lg:inline-flex m-4 " href="https://www.kainhao.site/tag/bZdf8hPUX/">
+            <span class="flex-auto">Golang一百天</span>
+          </a>
+        
+          <a class="animated fadeInUp p-2 items-center text-sm text-gray-700 border hover:bg-gray-300 leading-none rounded-full flex lg:inline-flex m-4 " href="https://www.kainhao.site/tag/MgT8Z72w6r/">
+            <span class="flex-auto">Go</span>
+          </a>
+        
+
+
+        <div class="flex justify-between py-8">
+          
+
+          
+        </div>
+
+        
+
+      </div>
+    </div>
+
+    <script src="https://www.kainhao.site/media/prism.js"></script>  
+<script>
+
+Prism.highlightAll()
+let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+// This should probably be throttled.
+// Especially because it triggers during smooth scrolling.
+// https://lodash.com/docs/4.17.10#throttle
+// You could do like...
+// window.addEventListener("scroll", () => {
+//    _.throttle(doThatStuff, 100);
+// });
+// Only not doing it here to keep this Pen dependency-free.
+
+window.addEventListener("scroll", event => {
+  let fromTop = window.scrollY;
+
+  mainNavLinks.forEach((link, index) => {
+    let section = document.getElementById(decodeURI(link.hash).substring(1));
+    let nextSection = null
+    if (mainNavLinks[index + 1]) {
+      nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+    }
+    if (section.offsetTop <= fromTop) {
+      if (nextSection) {
+        if (nextSection.offsetTop > fromTop) {
+          link.classList.add("current");
+        } else {
+          link.classList.remove("current");    
+        }
+      } else {
+        link.classList.add("current");
+      }
+    } else {
+      link.classList.remove("current");
+    }
+  });
+});
+
+
+document.addEventListener("DOMContentLoaded", function() {
+  var lazyImages = [].slice.call(document.querySelectorAll(".post-feature-image.lazy"));
+
+  if ("IntersectionObserver" in window) {
+    let lazyImageObserver = new IntersectionObserver(function(entries, observer) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          let lazyImage = entry.target
+          lazyImage.style.backgroundImage = `url(${lazyImage.dataset.bg})`
+          lazyImage.classList.remove("lazy")
+          lazyImageObserver.unobserve(lazyImage)
+        }
+      });
+    });
+
+    lazyImages.forEach(function(lazyImage) {
+      lazyImageObserver.observe(lazyImage)
+    })
+  } else {
+    // Possibly fall back to a more compatible method here
+  }
+});
+
+const menuContainer = document.querySelector('.menu-container')
+const menus = document.querySelectorAll('.menu-container .menu')
+const mask = document.querySelector('.mask')
+const contentWrapper = document.querySelector('.content-wrapper')
+const latestArticle = document.querySelector('.latest-article')
+const readMore = document.querySelector('.read-more')
+const indexPage = document.querySelector('.index-page')
+
+const isHome = location.pathname === '/'
+if (latestArticle) {
+  latestArticle.style.display = isHome ? 'block' : 'none'
+  readMore.style.display = isHome ? 'block' : 'none'
+  indexPage.style.display = isHome ? 'none' : 'block'
+}
+
+const openMenu = () => {
+  menuContainer.classList.add('open')
+  menus.forEach(menu => {
+    menu.classList.add('animated', 'fadeInLeft')
+  })
+  mask.classList.add('open')
+  contentWrapper.classList.add('is-second')
+}
+
+const closeMenu = () => {
+  menuContainer.classList.remove('open')
+  menus.forEach(menu => {
+    menu.classList.remove('animated', 'fadeInLeft')
+  })
+  mask.classList.remove('open')
+  contentWrapper.classList.remove('is-second')
+}
+</script>
+  
+  </body>
+</html>

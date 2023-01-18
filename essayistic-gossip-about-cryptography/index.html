@@ -1,0 +1,351 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>KainHao的蓼苇岛</title>
+<meta name="description" content="每一个不曾起舞的日子，都是对生命的辜负。" />
+<link rel="shortcut icon" href="https://www.kainhao.site/favicon.ico?v=1674012493822">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+
+<link rel="stylesheet" href="https://www.kainhao.site/styles/main.css">
+<!-- <script src="https://s2.pstatp.com/cdn/expire-1-M/valine/1.4.14/Valine.min.js"></script> -->
+
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main px-4 flex flex-col lg:flex-row">
+      <div id="sidebar" class="sidebar-wrapper lg:static lg:w-1/4">
+  <div class="lg:sticky top-0">
+    <div class="sidebar-content">
+      <div class="flex lg:block p-4 lg:px-0 items-center fixed lg:static lg:block top-0 right-0 left-0 bg-white z-50">
+        <i class="ri-menu-2-line lg:mt-4 text-2xl cursor-pointer animated fadeIn" onclick="openMenu()"></i>
+        <a href="https://www.kainhao.site">
+          <img class="animated fadeInLeft avatar rounded-lg mx-4 lg:mt-32 lg:mx-0 mt-0 lg:w-24 lg:h-24 w-12 w-12" src="https://www.kainhao.site/images/avatar.png?v=1674012493822" alt="">
+        </a>
+        <h1 class="animated fadeInLeft lg:text-4xl font-extrabold lg:mt-8 mt-0 text-xl" style="animation-delay: 0.2s">KainHao的蓼苇岛</h1>
+      </div>
+      
+        <div class="animated fadeInLeft" style="animation-delay: 0.4s">
+          <p class="my-4 text-gray-600 font-light hidden lg:block">
+            文章目录
+          </p>
+          <div class="toc-container hidden lg:block">
+            <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E6%9C%AC%E6%96%87%E4%B8%AD%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95%E9%80%9A%E5%B8%B8%E7%94%A8ex%E8%A1%A8%E7%A4%BA-%E8%A7%A3%E5%AF%86%E7%AE%97%E6%B3%95%E7%94%A8dx%E8%A1%A8%E7%A4%BA">本文中加密算法通常用<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>E</mi><mo>(</mo><mi>x</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">E(x)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mclose">)</span></span></span></span>表示, 解密算法用<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>D</mi><mo>(</mo><mi>x</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">D(x)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">D</span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mclose">)</span></span></span></span>表示</a></li>
+</ul>
+</li>
+<li><a href="#0x01-%E5%8F%A4%E5%85%B8%E5%AF%86%E7%A0%81">0x01 古典密码</a>
+<ul>
+<li><a href="#1-scytale%E5%AF%86%E7%A0%81">.1 Scytale密码</a></li>
+<li><a href="#2-%E5%87%AF%E6%92%92%E5%AF%86%E7%A0%81">.2 凯撒密码</a>
+<ul>
+<li><a href="#%E5%AE%9E%E4%BE%8B">实例</a></li>
+</ul>
+</li>
+<li><a href="#3-%E7%BB%B4%E5%90%89%E5%B0%BC%E4%BA%9A%E5%AF%86%E7%A0%81">.3 维吉尼亚密码</a>
+<ul>
+<li><a href="#%E5%AE%9E%E4%BE%8B-2">实例</a></li>
+</ul>
+</li>
+<li><a href="#4-%E6%A0%85%E6%A0%8F%E5%AF%86%E7%A0%81">.4 栅栏密码</a>
+<ul>
+<li><a href="#%E5%AE%9E%E4%BE%8B-3">实例</a></li>
+</ul>
+</li>
+<li><a href="#5-%E5%88%97%E5%BA%8F%E6%B3%95">.5 列序法</a>
+<ul>
+<li><a href="#%E5%AE%9E%E4%BE%8B-4">实例</a></li>
+</ul>
+</li>
+<li><a href="#6-enigma%E5%AF%86%E7%A0%81%E6%9C%BA">.6 Enigma密码机</a></li>
+<li><a href="#7-%E5%B0%8F%E7%BB%93">.7 小结</a></li>
+</ul>
+</li>
+<li><a href="#0x02-%E8%BF%91%E4%BB%A3%E5%AF%86%E7%A0%81%E5%AD%A6">0x02 近代密码学</a></li>
+<li><a href="#0x03-%E7%8E%B0%E4%BB%A3%E5%AF%86%E7%A0%81%E5%AD%A6">0x03 现代密码学</a>
+<ul>
+<li><a href="#1-%E5%90%8C%E4%BD%99">.1 同余!</a></li>
+</ul>
+</li>
+<li><a href="#exegesis">Exegesis</a></li>
+</ul>
+
+          </div>
+        </div>
+      
+    </div>
+  </div>
+</div>
+
+<div class="menu-container">
+  <i class="ri-arrow-left-line text-2xl cursor-pointer animated fadeIn close-menu-btn" onclick="closeMenu()"></i>
+  <div>
+    
+      
+        <a href="/" class="menu" style="animation-delay: 0s">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu" style="animation-delay: 0.2s">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu" style="animation-delay: 0.4s">
+          标签
+        </a>
+      
+    
+      
+        <a href="/essayistic-gossip" class="menu" style="animation-delay: 0.6000000000000001s">
+          碎笔
+        </a>
+      
+    
+  </div>
+  <div class="site-footer">
+    <div class="py-4 text-gray-700">All content on this site is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0 </a> agreement. <br />
+Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a></div>
+    <a class="rss" href="https://www.kainhao.site/atom.xml" target="_blank">RSS</a>
+  </div>
+</div>
+<div class="mask" onclick="closeMenu()">
+</div>
+      <div class="content-wrapper py-32 lg:p-8 lg:w-3/4 post-detail animated fadeIn">
+        <h1 class="text-3xl font-bold lg:mt-16">如何在课堂上安全地传纸条: 密码学闲话</h1>
+        <div class="text-sm text-gray-700 lg:my-8">
+          2022-08-07 / 10 min read
+        </div>
+        
+          <img class="post-feature-image rounded-lg mx-auto my-4" src="https://s-bj-2262-blog.oss.dogecdn.com/pexels-intel-core-i-k-12486294.jpg" alt="">
+        
+        <div class="post-content yue">
+          <p>设想这样一个场景:</p>
+<p>你现在坐在教室的一角, 而长达两个小时的课堂才刚刚开始. 你攒了一肚子怪话迫不及待地想要和教室对角的哥们分享, 于是你决定写纸条. 不幸的是, 纸条的传送路线并不安全——这条路线上有准备偷窥你的纸条的同学, 还有在教室里游走, 随时准备没收纸条的老师.</p>
+<p>事情看起来很棘手, 对吗?</p>
+<!-- more -->
+<p>不幸的是, 这是自文字出现以来所有尝试秘密传递信息的人所共同面对的困境. 为了保证信息被安全且保密地传输, 人们开始使用密码<sup>1</sup>. 研究如何将可读的信息(称为&quot;明文&quot;)通过某种手段变为不可读的信息(称为&quot;密文&quot;<sup>2</sup>)的学科就是密码学.<sup>3</sup>.</p>
+<hr>
+<h2 id="本文中加密算法通常用ex表示-解密算法用dx表示">本文中加密算法通常用<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>E</mi><mo>(</mo><mi>x</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">E(x)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mclose">)</span></span></span></span>表示, 解密算法用<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>D</mi><mo>(</mo><mi>x</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">D(x)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">D</span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mclose">)</span></span></span></span>表示</h2>
+<h1 id="0x01-古典密码">0x01 古典密码</h1>
+<h2 id="1-scytale密码">.1 Scytale密码</h2>
+<p>古典密码的历史可上溯到约公元前500年, 由斯巴达人所编制的Scytale密码<sup>4</sup>. 斯巴达人把长条纸螺旋形地斜绕在一个多棱棒上, 将文字沿棒的水平方向从左到右书写,写一个字旋转一下, 写完一行再另起一行从左到右写, 直到写完. 取下纸带后, 纸条上的文字消息杂乱无章、无法理解, 这就是密文, 但将它绕在另一个同等尺寸的棒子上后, 就能看到原始的消息. 这是可考的最早的密码技术.</p>
+<h2 id="2-凯撒密码">.2 凯撒密码</h2>
+<p>凯撒密码是一种最简单且广为人知的线性映射密码, 传说是由古罗马将领尤利乌斯·凯撒所发明. 其原理是将明文中的所有字母都在字母表上向后或向前按照一个固定数目(也就是通常所说的密钥, 叫做<code>偏移量</code>, 记作<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span>)进行移动. 例如, 当<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">n=2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span></span></span></span>时, 所有A将被替换成B, Y将被换成Z.<br>
+不难看出, 其加解密的公式为(记密文为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">x</span></span></span></span>):</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>E</mi><mi>n</mi></msub><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mo>(</mo><mi>x</mi><mo>+</mo><mi>n</mi><mo>)</mo><mi>m</mi><mi>o</mi><mi>d</mi><mn>26</mn></mrow><annotation encoding="application/x-tex">E_n(x) = (x+n) mod 26
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.05764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">n</span><span class="mclose">)</span><span class="mord mathdefault">m</span><span class="mord mathdefault">o</span><span class="mord mathdefault">d</span><span class="mord">2</span><span class="mord">6</span></span></span></span></span></p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>D</mi><mi>n</mi></msub><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mo>(</mo><mi>x</mi><mo>−</mo><mi>n</mi><mo>)</mo><mi>m</mi><mi>o</mi><mi>d</mi><mn>26</mn></mrow><annotation encoding="application/x-tex">D_n(x) = (x-n) mod 26 
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.02778em;">D</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.02778em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">n</span><span class="mclose">)</span><span class="mord mathdefault">m</span><span class="mord mathdefault">o</span><span class="mord mathdefault">d</span><span class="mord">2</span><span class="mord">6</span></span></span></span></span></p>
+<p>其缺陷在于可使用的偏移量并不足够大或足够小, 即<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>n</mi><mrow><mi>m</mi><mi>a</mi><mi>x</mi></mrow></msub><mo>=</mo><mn>25</mn><mo separator="true">,</mo><msub><mi>n</mi><mrow><mi>m</mi><mi>i</mi><mi>n</mi></mrow></msub><mo>=</mo><mo>−</mo><mn>25</mn></mrow><annotation encoding="application/x-tex">n_{max}=25, n_{min}=-25</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">n</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">m</span><span class="mord mathdefault mtight">a</span><span class="mord mathdefault mtight">x</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8388800000000001em;vertical-align:-0.19444em;"></span><span class="mord">2</span><span class="mord">5</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">n</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">m</span><span class="mord mathdefault mtight">i</span><span class="mord mathdefault mtight">n</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">−</span><span class="mord">2</span><span class="mord">5</span></span></span></span>, 因而可以通过穷举法轻易破解. 即使不使用穷举法, 也可以通过频率分析或特征单词分析等方法进行破解.</p>
+<h3 id="实例">实例</h3>
+<p>明文: SHINE<br>
+偏移量<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span>: 2<br>
+密文: TIJOF</p>
+<h2 id="3-维吉尼亚密码">.3 维吉尼亚密码</h2>
+<p>维吉尼亚密码是使用一系列凯撒密码组成密码字母表的线性映射加密算法. 其使用若干个字母作为密钥, 词组中每一个字母都作为移位替换密码密钥确定一个替换表, 维吉尼亚密码循环的使用每一个替换表完成明文字母到密文字母的变换, 最后所得到的密文字母序列即为加密得到的密文.</p>
+<h3 id="实例-2">实例</h3>
+<p>记明文为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>K</mi></mrow><annotation encoding="application/x-tex">K</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07153em;">K</span></span></span></span>,  其长度为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>l</mi><mi>e</mi><mi>n</mi><mo>(</mo><mi>K</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">len(K)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">e</span><span class="mord mathdefault">n</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.07153em;">K</span><span class="mclose">)</span></span></span></span>, 密钥为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>k</mi><mi>e</mi><mi>y</mi></mrow><annotation encoding="application/x-tex">key</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mord mathdefault">e</span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span></span></span></span>.<br>
+设明文为PERASPERA, 密钥为ADASTRA.<br>
+首先循环密钥直到其长度与明文相同<sup>5</sup>:</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>l</mi><mi>e</mi><mi>n</mi><mo>(</mo><mi>K</mi><mo>)</mo><mo>=</mo><mi>l</mi><mi>e</mi><mi>n</mi><mo>(</mo><mi>k</mi><mi>e</mi><msub><mi>y</mi><mn>1</mn></msub><mo>+</mo><mi>k</mi><mi>e</mi><msub><mi>y</mi><mn>2</mn></msub><mo>+</mo><mi>k</mi><mi>e</mi><msub><mi>y</mi><mn>3</mn></msub><mo>+</mo><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">.</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">len(K) = len(key_1+key_2+key_3+...) 
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">e</span><span class="mord mathdefault">n</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.07153em;">K</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">e</span><span class="mord mathdefault">n</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mord mathdefault">e</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mord mathdefault">e</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mord mathdefault">e</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">.</span><span class="mord">.</span><span class="mord">.</span><span class="mclose">)</span></span></span></span></span></p>
+<p>即ADASTRAAD, 然后用字母在字母表中对应的位置替换字母, A在字母表中是第1位, D在字母表中是第4位...以此类推, 然后根据每位密钥的位置, 将其作为偏移量对对应位置的明文进行凯撒加密.<br>
+得到的结果是: PHRSLGERD<br>
+一般, 特征单词分析等方法对维吉尼亚密码仍然有效. 此外, 还有一些无密钥破解的方法, 如:<a href="http://atomcated.github.io/Vigenere/">http://atomcated.github.io/Vigenere/</a></p>
+<h2 id="4-栅栏密码">.4 栅栏密码</h2>
+<p>栅栏密码是一种移位密码. 其加密原理是将明文分为每<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span></span></span></span>个字符一组, 然后将每组字符依序连接, 得到密文.</p>
+<h3 id="实例-3">实例</h3>
+<p>ADASTRAPERASPREA, <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>k</mi><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">k=3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">3</span></span></span></span><br>
+分组后的结果是: ADA|STR|APE|RAS|PRE|A<br>
+取每组第一个字母得到ASARPA, 取第二个得到DTPAR, 取第三个得到ARESE, 从而得到密文ASARPADTPARARESE.</p>
+<h2 id="5-列序法">.5 列序法</h2>
+<p>列序法, 顾名思义, 就是将原本按行排列的明文转为按序排列.</p>
+<h3 id="实例-4">实例</h3>
+<p>明文: spectrophoto, 列数为4<br>
++---+---+---+---+<br>
+|   s  |  p  |  e  |  c  |<br>
++---+---+---+---+<br>
+|   t  |   r  |  o  |  p  |<br>
++---+---+---+---+<br>
+|  h  |   o |   t  |  o  |<br>
++---+---+---+---+<br>
+按列得出的密文是sthproeotcpo.</p>
+<h2 id="6-enigma密码机">.6 Enigma密码机</h2>
+<p>Enigma是一种使用多表代换的密码学, 二战期间在德国开发. 它通过不断改变明文和密文的字母映射关系, 对明文字母们进行着连续不断的换表加密操作.</p>
+<h2 id="7-小结">.7 小结</h2>
+<p>不难看出, 这一时期的密码学更像是一门艺术, 其核心手段是代换和置换. 代换是指明文中的每一个字符被替换成密文中的另一个字符, 接收者对密文做反向替换便可恢复出明文; 置换是密文和明文字母保持相同, 但顺序被打乱.<sup>6</sup></p>
+<h1 id="0x02-近代密码学">0x02 近代密码学</h1>
+<p>密码形成一门新的学科是在20世纪70年代，这是受计算机科学蓬勃发展刺激和推动的结果。快速电子计算机和现代数学方法一方面为加密技术提供了新的概念和工具，另一方面也给破译者提供了有力武器。计算机和电子学时代的到来给密码设计者带来了前所未有的自由，他们可以轻易地摆脱原先用铅笔和纸进行手工设计时易犯的错误，也不用再面对用电子机械方式实现的密码机的高额费用。</p>
+<p>Arthur Scherbius于1919年设计出了历史上最著名的密码机—德国的Enigma机,，在二次世界大战期间， Enigma曾作为德国陆、海、空三军最高级密码机。Enigma机使用了3个正规轮和1个反射轮。这使得英军从1942年2月到12月都没能解读出德国潜艇发出的信号。转轮密码机的使用大大提高了密码加密速度，但由于密钥量有限，到二战中后期时，引出了一场关于加密与破译的对抗。首先是波兰人利用德军电报中前几个字母的重复出现，破解了早期的Enigma密码机，而后又将破译的方法告诉了法国人和英国人。英国人在计算机理论之父——图灵的带领下，通过寻找德国人在密钥选择上的失误，并成功夺取德军的部分密码本，获得密钥，以及进行选择明文攻击等等手段，破解出相当多非常重要的德军情报。</p>
+<p>这一阶段真正开始源于香农在20世纪40年代末发表的一系列论文，特别是1949年的《保密系统通信理论》，把已有数千年历史的密码学推向了基于信息论的科学轨道。近代密码发展中一个重要突破是“数据加密标准”（DES）的出现。DES密码的意义在于，首先，其出现使密码学得以从政府走向民间，其设计主要由IBM公司完成，国家安全局等政府部门只是参与其中，最终经美国国家标准局公开征集遴选后，确定为联邦信息处理标准。其次，DES密码设计中的很多思想（Feistel结构、S盒等），被后来大多数分组密码所采用。再次，DES出现之后，不仅在美国联邦部门中使用，而且风行世界，并在金融等商业领域广泛使用。</p>
+<h1 id="0x03-现代密码学">0x03 现代密码学</h1>
+<p>1976 年，美国密码学家提出“公钥密码”概念。此类密码中加密和解密使用不同的密钥，其中，用于加密的叫做公钥，用于解密的为私钥。1977年，美国麻省理工学院提出第一个公钥加密算法RSA算法，之后ElGamal、椭圆曲线、双线性对等公钥密码相继被提出，密码学真正进入了一个新的发展时期。一般来说，公钥密码的安全性由相应数学问题在计算机上的难解性来保证，以广为使用的RSA算法为例，它的安全性是建立在大整数素因子分解在计算机上的困难性，如，对于整数22，我们易于发现它可以分解为2和11两个素数相乘，但对于一个500位的整数，即使采用相应算法，也要很长时间才能完成分解。</p>
+<p>好了, 现在我们已经介绍完传纸条时比较实用的技巧和密码学的发展历史了, 现在该来点我喜欢的东西了--</p>
+<h2 id="1-同余">.1 同余!</h2>
+<p>同余定理是数论中的重要概念:</p>
+<blockquote>
+<p>给定一个正整数m，如果两个整数<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">a</span></span></span></span>和<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>b</mi></mrow><annotation encoding="application/x-tex">b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">b</span></span></span></span>满足<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>(</mo><mi>a</mi><mo>−</mo><mi>b</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">(a-b)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathdefault">a</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">b</span><span class="mclose">)</span></span></span></span>能够被<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">m</span></span></span></span>整除，即<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mfrac><mrow><mo>(</mo><mi>a</mi><mo>−</mo><mi>b</mi><mo>)</mo></mrow><mi>m</mi></mfrac></mrow><annotation encoding="application/x-tex">\frac{(a-b)}{m}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.355em;vertical-align:-0.345em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.01em;"><span style="top:-2.6550000000000002em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">m</span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.485em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mopen mtight">(</span><span class="mord mathdefault mtight">a</span><span class="mbin mtight">−</span><span class="mord mathdefault mtight">b</span><span class="mclose mtight">)</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span>得到一个整数，那么就称整数<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">a</span></span></span></span>与<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>b</mi></mrow><annotation encoding="application/x-tex">b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">b</span></span></span></span>对模<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">m</span></span></span></span>同余，记作<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi><mo>≡</mo><mi>b</mi><mo>(</mo><mi>m</mi><mi>o</mi><mi>d</mi><mi>m</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">a\equiv b (mod  m)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.46375em;vertical-align:0em;"></span><span class="mord mathdefault">a</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≡</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">b</span><span class="mopen">(</span><span class="mord mathdefault">m</span><span class="mord mathdefault">o</span><span class="mord mathdefault">d</span><span class="mord mathdefault">m</span><span class="mclose">)</span></span></span></span></p>
+</blockquote>
+<hr>
+<h1 id="exegesis">Exegesis</h1>
+<p>1: 用于登录、认证的&quot;密码&quot;实际上叫做口令(<code>token</code>或<code>password</code>). 对于密码, 一个简明易懂的定义是&quot;按照'你知, 我知, 他不知'原则编制出用于传输的信息&quot;.<br>
+2: 通常而言, 密文可通过某种手段转化为明文, 但也不尽然. 例如, <code>SHA256</code>等哈希算法就是不可逆的加密算法.<br>
+3: 显而易见的是, 密码的首要目的是<em>隐藏信息的涵义</em>而不是<em>隐藏信息的存在</em>.<br>
+4: 又称&quot;塞塔密码&quot;&quot;滚筒密码&quot;.<br>
+5: 如果不能理解的话, 这一步实际上是在这样进行:<br>
+想象将密文无限重复. 即: ADASTRA|ADASTRA|ADASTRA|ADASTRA... , 然后从头开始截取长度与明文长度相等的字符串, 得到ADASTRAAD.<br>
+6: 其实把这些密码放上来纯粹是为了好玩...</p>
+
+        </div>
+
+        
+          <a class="animated fadeInUp p-2 items-center text-sm text-gray-700 border hover:bg-gray-300 leading-none rounded-full flex lg:inline-flex m-4 " href="https://www.kainhao.site/tag/21b650ovw/">
+            <span class="flex-auto">密码学</span>
+          </a>
+        
+          <a class="animated fadeInUp p-2 items-center text-sm text-gray-700 border hover:bg-gray-300 leading-none rounded-full flex lg:inline-flex m-4 " href="https://www.kainhao.site/tag/Ij1bX3XAy/">
+            <span class="flex-auto">蓼苇杂谈</span>
+          </a>
+        
+
+
+        <div class="flex justify-between py-8">
+          
+            <div class="prev-post">
+              <a href="https://www.kainhao.site/renaissance-science-i/">
+                <h3 class="post-title">
+                  <i class="ri-arrow-left-line"></i>
+                  Renaissance Science - I | 文艺复兴时期的科学(一)
+                </h3>
+              </a>
+            </div>
+          
+
+          
+            <div class="next-post">
+              <a href="https://www.kainhao.site/kotlin-chu-shi/">
+                <h3 class="post-title">
+                  Kotlin初识
+                  <i class="ri-arrow-right-line"></i>
+                </h3>
+              </a>
+            </div>
+          
+        </div>
+
+        
+
+      </div>
+    </div>
+
+    <script src="https://www.kainhao.site/media/prism.js"></script>  
+<script>
+
+Prism.highlightAll()
+let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+// This should probably be throttled.
+// Especially because it triggers during smooth scrolling.
+// https://lodash.com/docs/4.17.10#throttle
+// You could do like...
+// window.addEventListener("scroll", () => {
+//    _.throttle(doThatStuff, 100);
+// });
+// Only not doing it here to keep this Pen dependency-free.
+
+window.addEventListener("scroll", event => {
+  let fromTop = window.scrollY;
+
+  mainNavLinks.forEach((link, index) => {
+    let section = document.getElementById(decodeURI(link.hash).substring(1));
+    let nextSection = null
+    if (mainNavLinks[index + 1]) {
+      nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+    }
+    if (section.offsetTop <= fromTop) {
+      if (nextSection) {
+        if (nextSection.offsetTop > fromTop) {
+          link.classList.add("current");
+        } else {
+          link.classList.remove("current");    
+        }
+      } else {
+        link.classList.add("current");
+      }
+    } else {
+      link.classList.remove("current");
+    }
+  });
+});
+
+
+document.addEventListener("DOMContentLoaded", function() {
+  var lazyImages = [].slice.call(document.querySelectorAll(".post-feature-image.lazy"));
+
+  if ("IntersectionObserver" in window) {
+    let lazyImageObserver = new IntersectionObserver(function(entries, observer) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          let lazyImage = entry.target
+          lazyImage.style.backgroundImage = `url(${lazyImage.dataset.bg})`
+          lazyImage.classList.remove("lazy")
+          lazyImageObserver.unobserve(lazyImage)
+        }
+      });
+    });
+
+    lazyImages.forEach(function(lazyImage) {
+      lazyImageObserver.observe(lazyImage)
+    })
+  } else {
+    // Possibly fall back to a more compatible method here
+  }
+});
+
+const menuContainer = document.querySelector('.menu-container')
+const menus = document.querySelectorAll('.menu-container .menu')
+const mask = document.querySelector('.mask')
+const contentWrapper = document.querySelector('.content-wrapper')
+const latestArticle = document.querySelector('.latest-article')
+const readMore = document.querySelector('.read-more')
+const indexPage = document.querySelector('.index-page')
+
+const isHome = location.pathname === '/'
+if (latestArticle) {
+  latestArticle.style.display = isHome ? 'block' : 'none'
+  readMore.style.display = isHome ? 'block' : 'none'
+  indexPage.style.display = isHome ? 'none' : 'block'
+}
+
+const openMenu = () => {
+  menuContainer.classList.add('open')
+  menus.forEach(menu => {
+    menu.classList.add('animated', 'fadeInLeft')
+  })
+  mask.classList.add('open')
+  contentWrapper.classList.add('is-second')
+}
+
+const closeMenu = () => {
+  menuContainer.classList.remove('open')
+  menus.forEach(menu => {
+    menu.classList.remove('animated', 'fadeInLeft')
+  })
+  mask.classList.remove('open')
+  contentWrapper.classList.remove('is-second')
+}
+</script>
+  
+  </body>
+</html>

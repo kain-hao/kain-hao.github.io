@@ -1,0 +1,345 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>KainHao的蓼苇岛</title>
+<meta name="description" content="每一个不曾起舞的日子，都是对生命的辜负。" />
+<link rel="shortcut icon" href="https://www.kainhao.site/favicon.ico?v=1674012493822">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+
+<link rel="stylesheet" href="https://www.kainhao.site/styles/main.css">
+<!-- <script src="https://s2.pstatp.com/cdn/expire-1-M/valine/1.4.14/Valine.min.js"></script> -->
+
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main px-4 flex flex-col lg:flex-row">
+      <div id="sidebar" class="sidebar-wrapper lg:static lg:w-1/4">
+  <div class="lg:sticky top-0">
+    <div class="sidebar-content">
+      <div class="flex lg:block p-4 lg:px-0 items-center fixed lg:static lg:block top-0 right-0 left-0 bg-white z-50">
+        <i class="ri-menu-2-line lg:mt-4 text-2xl cursor-pointer animated fadeIn" onclick="openMenu()"></i>
+        <a href="https://www.kainhao.site">
+          <img class="animated fadeInLeft avatar rounded-lg mx-4 lg:mt-32 lg:mx-0 mt-0 lg:w-24 lg:h-24 w-12 w-12" src="https://www.kainhao.site/images/avatar.png?v=1674012493822" alt="">
+        </a>
+        <h1 class="animated fadeInLeft lg:text-4xl font-extrabold lg:mt-8 mt-0 text-xl" style="animation-delay: 0.2s">KainHao的蓼苇岛</h1>
+      </div>
+      
+        <div class="animated fadeInLeft" style="animation-delay: 0.4s">
+          <p class="my-4 text-gray-600 font-light hidden lg:block">
+            文章目录
+          </p>
+          <div class="toc-container hidden lg:block">
+            <ul class="markdownIt-TOC">
+<li><a href="#0x00-%E5%86%99%E5%9C%A8%E5%89%8D%E9%9D%A2">0x00 写在前面</a></li>
+<li><a href="#0x01-%E4%BB%8E%E4%BF%A1%E7%94%A8%E4%B8%AD%E4%BB%8B%E8%B0%88%E8%B5%B7">0x01 从信用中介谈起</a></li>
+<li><a href="#0x02-%E5%8C%BA%E5%9D%97%E9%93%BE%E8%BF%98%E5%BE%97%E7%9C%8B%E8%80%81%E7%A5%96%E5%AE%97-%E6%AF%94%E7%89%B9%E5%B8%81%E4%BA%A4%E6%98%93%E6%B5%81%E7%A8%8B%E6%B5%85%E6%9E%90">0x02 区块链还得看老祖宗: 比特币交易流程浅析</a></li>
+<li><a href="#0x03-%E9%92%B1%E5%8C%85-%E5%9C%B0%E5%9D%80-%E7%A7%81%E9%92%A5%E5%92%8C%E5%85%AC%E9%92%A5">0x03 钱包、地址, 私钥和公钥</a></li>
+<li><a href="#0x04-utxo">0x04 UTXO</a></li>
+<li><a href="#0x05-%E5%8F%8C%E8%8A%B1%E9%97%AE%E9%A2%98%E5%92%8C51%E7%AE%97%E5%8A%9B%E6%94%BB%E5%87%BB">0x05 双花问题和51%算力攻击</a></li>
+<li><a href="#0x06-%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%B9%BD%E7%81%B5%E6%8B%9C%E5%8D%A0%E5%BA%AD%E5%B0%86%E5%86%9B%E9%97%AE%E9%A2%98">0x06 分布式系统的幽灵——拜占庭将军问题</a></li>
+<li><a href="#0x07-%E5%85%B3%E4%BA%8Eeth%E7%9A%84%E7%AE%80%E5%8D%95%E4%BB%8B%E7%BB%8D">0x07 关于ETH的简单介绍</a></li>
+<li><a href="#references">References</a></li>
+</ul>
+
+          </div>
+        </div>
+      
+    </div>
+  </div>
+</div>
+
+<div class="menu-container">
+  <i class="ri-arrow-left-line text-2xl cursor-pointer animated fadeIn close-menu-btn" onclick="closeMenu()"></i>
+  <div>
+    
+      
+        <a href="/" class="menu" style="animation-delay: 0s">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu" style="animation-delay: 0.2s">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu" style="animation-delay: 0.4s">
+          标签
+        </a>
+      
+    
+      
+        <a href="/essayistic-gossip" class="menu" style="animation-delay: 0.6000000000000001s">
+          碎笔
+        </a>
+      
+    
+  </div>
+  <div class="site-footer">
+    <div class="py-4 text-gray-700">All content on this site is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0 </a> agreement. <br />
+Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a></div>
+    <a class="rss" href="https://www.kainhao.site/atom.xml" target="_blank">RSS</a>
+  </div>
+</div>
+<div class="mask" onclick="closeMenu()">
+</div>
+      <div class="content-wrapper py-32 lg:p-8 lg:w-3/4 post-detail animated fadeIn">
+        <h1 class="text-3xl font-bold lg:mt-16">区块链到底是什么?</h1>
+        <div class="text-sm text-gray-700 lg:my-8">
+          2021-10-29 / 16 min read
+        </div>
+        
+          <img class="post-feature-image rounded-lg mx-auto my-4" src="https://s-bj-2262-blog.oss.dogecdn.com/pexels-tatiana-2124897.jpg" alt="">
+        
+        <div class="post-content yue">
+          <h1 id="0x00-写在前面">0x00 写在前面</h1>
+<p>区块链这东西提出来也十多年了, 有些人将其视作<code>第四次工业革命的底层技术</code>, 但是绝大多数人仍然对这个概念一无所知, 那今天就来跟大伙聊聊——到底啥叫区块链啊??</p>
+<!-- more -->
+<hr>
+<h1 id="0x01-从信用中介谈起">0x01 从信用中介谈起</h1>
+<p>信用中介这玩意听起来挺高大上, 实际说起来谁也不陌生——借贷关系中为双方提供担保的人/机构. 比如小松问你借钱, 你没有钱, 于是你去找了小梅借钱. 这个时候你需要向小梅担保小松一定会还钱, 所以信用中介一定需要有足够的信用度才能成为信用中介. 但是在实际的借贷关系中, 信用中介都是有成本的——不挣钱这事谁干啊?? 所以在离不开借贷关系的现代经济中, 为成本埋单的就是所有人——现在你知道为什么华尔街这么有钱了吧?</p>
+<figure data-type="image" tabindex="1"><img src="https://s-bj-2262-blog.oss.dogecdn.com/%E4%BF%A1%E7%94%A8%E4%B8%AD%E4%BB%8B.png" alt="借贷关系的示意图" loading="lazy"></figure>
+<p>于是有人开始琢磨了——<strong>如何尽可能降低这种成本呢?</strong></p>
+<p>从上面这张图可以很明显看出来这种借贷关系的中心——信用中介. 那好办了嘛, 要不让它消灭成本, 要么我们消灭它. 俗话说得好, 断人财路杀人父母, 让信用中介消灭成本是不可能的, 那我们消灭它好了——于是诞生了<code>去中心化</code>这种思想. 既然让一个中心担保不可能, 那我们让一堆人来担保不就可以了嘛.</p>
+<p><em>冷知识: P2P借贷其实也是基于去中心化的思想, 只不过少了最关键的一步——担保. 所以P2P借贷平台总是暴雷的原因很大一部分要归功于不守信用的借款人</em></p>
+<p>说对了. 让大家都为所有交易担保, 这就是区块链技术的核心.</p>
+<p>第一个实践这种思想的人叫中本聪(Satoshi Nakamoto), 对, 就是发明比特币的那个人.</p>
+<p><em>热知识: 区块链其实是作为比特币的底层技术被提出的</em></p>
+<hr>
+<h1 id="0x02-区块链还得看老祖宗-比特币交易流程浅析">0x02 区块链还得看老祖宗: 比特币交易流程浅析</h1>
+<p>我们现在假设小C和小H都有一个比特币地址(地址是怎么实现的呢?后面再说, 你现在可以把它视为银行卡号码之类的东西), 现在小H要向小C付一笔比特币, 交易流程是这样的:</p>
+<p>小H的比特币客户端经过一番计算后把交易申请在整个比特币网络上进行广播, 让整个网络上的人(其实是参与记账的节点, 又叫做<code>矿工</code>)承认这笔交易有效.</p>
+<p>矿工验证过这笔交易后, 将其记在账簿(一种运行在所有节点上的分布式数据库, 专门用来记录交易)上. 一旦被记录就不可更改不可销毁(为什么呢?后面再说)</p>
+<p>现在有三个矿工(小X, 小Z和小Y), 他们收到了小H向小C的交易申请的广播和其他的交易广播, 他们运行的比特币挖矿程序会自动将过去约10min的交易打包成一个新的交易区块并计算基于该区块、上一个区块的某个数据和随机数的一个数据(计算了啥呢?后面再说). 最先计算出的矿工会得到系统规定的某个数量的比特币作为奖励.</p>
+<p>然后矿工会把这个区块盖上时间戳向全网广播, 其他矿工再验证.</p>
+<p>综上, 比特币系统有以下几个优点:</p>
+<ul>
+<li>
+<p>无需三方信用中介, 每个人都是信用中介.</p>
+</li>
+<li>
+<p>因为每个区块都基于上一个区块, 不可销毁, 不可更改, 不可伪造.</p>
+</li>
+<li>
+<p>供应有限(众所周知, 比特币上限数量为2100万个*(实际上可以分割成百万分之一个比特币, 又称Satoshi)*), 防止通胀(这也是为什么比特币被叫做数字黄金)</p>
+</li>
+</ul>
+<p><strong>但是</strong>...:</p>
+<ul>
+<li>比特币交易确认时间过长, 一般认为每等待六个区块后可以确认交易不可逆, 但是每10min产生一个区块, 这样等待一笔交易确认就需要1h的时间.</li>
+<li>工作量证明机制过于单一, 理论上对比特币发动51%算力攻击也是可行的(参见后文)</li>
+<li>区块容量. 完全节点有硬性的物理尺寸限制(每个区块最大1MB), 所以每10min产生1MB的区块, 通过计算可以得出限制大约是每秒7笔交易, 每天600000笔交易, 当达到这个阈值时, 没确认的交易会延长确认时间.</li>
+<li>图灵性差(参见后文)</li>
+</ul>
+<p><strong>那矿工们打包区块的时候, 到底计算了啥呢?</strong></p>
+<p>他们计算了本区块 + 上一个区块的SHA256值 + 随机数的<strong>SHA256值</strong>.</p>
+<p>那是啥? 让我们先来看看密码学上的经典——散列算法.</p>
+<p>哈希算法(<code>Hash Algorithm</code>)又称散列算法或摘要算法(<code>Digest Algorithm</code>), 是不可逆(事实上可以逆向, 但是现代哈希算法逆向所需要的工作量极高)且极难预测的算法. 它可以对任意输入进行计算得到固定长度的输出摘要. 通过得当的算法设计, 哈希算法可以做到两个特点:</p>
+<ul>
+<li>相同输入, 输出一定相同.</li>
+<li>不同输入, 输出极大概率不同.</li>
+</ul>
+<p>哈希算法的目的就是为了验证原始数据是否被篡改.</p>
+<p>所以当你拿到一组数据和它的摘要的时候, 通过相同的摘要算法就可验证数据是否经过改动.</p>
+<p>SHA256就是一种密码散列函数算法标准. 由于算法是公开的, 所有人都可以验证这个区块数据的可信程度. 而由于每个区块由基于上一个区块的SHA256值, 当你改动这个区块时, 势必要改动上一个区块的数据, 而上一个区块又基于上上个区块...这么相互链接成一条链直到第一个区块(有时也叫<code>创世区块</code>), 所以叫<strong>区块链</strong>.</p>
+<p>计算散列对于现代计算机来说很容易, 但是比特币系统要求新的散列值拥有特定格式——以特定数量的0开始, 由于SHA256算法极难预测, 所以矿工必须用不同的随机数计算出许多摘要, 直到获得正确的那个.</p>
+<p>以上过程统称为——<strong>挖矿</strong>.</p>
+<h1 id="0x03-钱包-地址-私钥和公钥">0x03 钱包、地址, 私钥和公钥</h1>
+<p>钱包是一种文件, 可以让用户访问多个比特币地址.</p>
+<p>比特币地址是类似银行卡号码的东西, 是一串由字母和数字组成的字符串.</p>
+<p><em>热知识: 比特币和银行卡的工作机制非常不同, 比特币用户可以任意创建地址, 这样做是被鼓励的——用于增强匿名性和隐私性</em></p>
+<p>每一个地址都有自己的比特币余额(也就UTXO, 参见下文.) 当小H创建一个新地址时, 小H实际上是在生成一个密钥对. 这对密钥由一个公钥和一个私钥组成. 私钥只有小H知道且与小H的钱包文件绑定, 而对应的公钥每个矿工都了解. 当小H用私钥对一个消息进行签名, 所有持有公钥的人都能验证它.</p>
+<p>当小H申请交易时, 他的客户端用此地址的私钥签名这一交易申请, 而所有矿工都会验证这一申请——用公钥.</p>
+<h1 id="0x04-utxo">0x04 UTXO</h1>
+<p>大家都在电脑上用过复制的功能吧? 因为数据是可以复制的, 所以同一笔数字资产可能被交易两次. 在一般的中心化交易网络(就是你和银行和其他人)中, 一般通过实时修改账户余额来实现.</p>
+<p>但由于不存在一般意义上的中心, 比特币创造性地整合了时间戳和工作量证明机制, 还发明了UTXO(<code>Unspent Transaction Outputs</code>,未使用的交易输出)机制. 具体来说就是这样的:</p>
+<p>假设小H有 8 个比特币, 这其实意味着, 之前有一个交易把这些比特币转入小H的地址, 这个交易的输出（即 8 个比特币）未被使用, 小H拥有了这 8 个比特币.</p>
+<p>现在, 小H要发起一个转账交易, 这个交易中的输入是让小H拥有这些比特币的上一个交易.</p>
+<p>小H要转账给小C 7 个比特币, 小H所做的是, 对让他拥有这些 8 个比特币的上一个交易进行签名, 把这一新转账交易的输出地址设为小C的钱包地址.  这样, 小H就发起了一个转账支付交易(银行卡的支付方式通常是——确认小H的余额并在小H的余额中减100, 在小C的余额中加100; 而UTXO的机制则是不管怎样必须消耗完UTXO, 即从UTXO中转出 7 个比特币支付给小C并转出一个给小H(这一个会成为新的UTXO)). 等矿工将这一交易打包进新的区块, 转账交易完成, 这 8 个比特币就属于你了. 小C拥有的是他们两个这次交易的未使用的交易输出(UTXO).</p>
+<p>UTXO与帐本系统深度耦合, 不需要向上追溯每一笔交易, 只需要确认上一笔交易可信.</p>
+<p>这样一个好处就是, 如果从第一个区块开始逐步计算所有比特币地址中的余额, 就可以计算出不同时间的各个比特币账户的余额了.</p>
+<h1 id="0x05-双花问题和51算力攻击">0x05 双花问题和51%算力攻击</h1>
+<p>双花问题, 就是一笔资产被两次使用. 在一般的中心化交易网络中, 一般通过实施更改账户余额来避免双重支付. 但是在比特币系统中, 我们使用时间戳、工作量证明机制和UTXO模型来解决问题.</p>
+<p>当一个区块被挖掘出来时, 挖矿人会在记录交易信息的同时, 为区块添加时间信息. 后续的区块一般晚于之前的区块, 这样使得交易可以按时序记录. 而工作量证明机制确保矿工不能随意生成区块, 而必须提供算力来解决一定问题才能争夺记账权力, 每个区块都有各自的哈希值, 这个数值取决于上一个区块的散列值和此区块包含的交易信息. 如果想让一笔钱双花, 那么必须先等包含正常交易信息的区块放入链中, 再从消费之前的某点开始竞争计算一条新链, 由于新生区块的内容有差异, 区块链从差异节点产生分支. 根据比特币网络承认<code>最长链</code>的特性, 新链中区块的生成速度必须高于原链才能使原链作废. 要做到比原链计算速度更快, 攻击节点的综合算力必须达到网络总算力的51%.</p>
+<p><em>这是显而易见的. 当有50%的算力都归攻击节点时, 两条链的生成速度是相同的.</em></p>
+<h1 id="0x06-分布式系统的幽灵拜占庭将军问题">0x06 分布式系统的幽灵——拜占庭将军问题</h1>
+<blockquote>
+<p>It is not sufficient that everyone knows X. We also need everyone to  know that everyone knows X, and that everyone knows that everyone knows  that everyone knows X - which, as in the Byzantine Generals problem, is  the classic hard problem of distributed data processing.<br>
+（译文：所有人都知道X是不够的。我们还需要所有人都知道所有人都知道X，以及所有人都知道所有人都知道所有人都知道X，就像是在拜占庭将军问题里的那样——这是个分布式数据处理中的经典的困难问题。）<br>
+——James A. Donald</p>
+</blockquote>
+<p>关于拜占庭将军问题, 一个简易的非正式描述如下<sup>1</sup>:</p>
+<p>东! **罗! 马! **帝国(即拜占庭帝国)想要进攻一个强大的敌国, 为此派出了10支军队去包围敌国, 敌国虽不比拜占庭帝国更为强大, 但也足以抵御五只拜占庭军队的同时袭击. 由于某些原因, 这十支军队必须分开同时进攻, 他们任何一支单独进攻都毫无胜算, 除非至少六支军队同时进攻. 这些军队依靠通信兵相互通信来协商进攻意向和进攻时间. 困扰这些将军的问题是, 他们不确定他们当中是否有叛徒, 因为叛徒可能擅自变更进攻意向或者进攻时间. 他们能否找到一种分布式的协议让他们能够远程协商从而赢取战斗?</p>
+<p>在这里我们仅讨论一种简单的情况, 有兴趣的读者可以自行阅读原始文献(见References)</p>
+<p>当将军总数n=3, 叛徒数m=1时.</p>
+<p>这时，我们希望：</p>
+<ol>
+<li>如果指挥官是诚实的，那么诚实的将军必须听从指挥官的命令。</li>
+<li>如果指挥官是叛徒，那么两个诚实的将军必须做出一致的决定。</li>
+</ol>
+<p>也许很多人都已经知道，这个问题是无解的，原因如下：</p>
+<ol>
+<li>将军收到“进攻”的指令的时候，他不能直接做出“进攻”的判定，因为指挥官可能是叛徒。</li>
+<li>于是将军收到指令之后，它必须向另一名将军询问指挥官给另一名将军的指令。</li>
+<li>假设这个时候将军从指挥官那收到了“进攻”，而另一名将军却告诉他“指挥官跟我说的是撤退”。而这个时候，这位将军就会陷入一个困境：第一种可能是，指挥官是诚实的并且向两个将军都下达了“进攻”的指令，但是另一名将军是叛徒并且篡改了指挥官的命令；而另一种可能是，指挥官是叛徒并且向两个将军各下达了不同的指令。作为这位可怜的将军，他无法分别这两种情况。</li>
+<li>这里来到了问题的重点：我们并不关心他的决定究竟是“进攻”还是“撤退”，我们关心的是，如果我们预设任何一种战术，例如：遇到上述情况时选择“进攻”（“撤退”），它能在某一种可能的时候达成目标，但是在另一种可能的时候失效。</li>
+</ol>
+<p>这只是对口头协议下拜占庭将军问题的一个简单分析, 关于区块链的共识问题我打算单独用一篇文章来介绍一下. 算是抛砖引玉, 有错误的地方还劳驾赐教.</p>
+<h1 id="0x07-关于eth的简单介绍">0x07 关于ETH的简单介绍</h1>
+<p>自2008年比特币出现以来, &quot;加密货币&quot;的存在已经渐渐为一部分人所接受. 人们也积极开展了基于比特币的商业应用的思考与开发. 但随着应用的扩展, 人们发现比特币的设计只适合&quot;虚拟货币&quot;场景, 由于存在非图灵完备性(简单理解就是程序过于简单, 不支持在比特币网络上运行复杂的程序), 缺少保存状态的账户概念等问题, 在很多区块链应用场景下并不适用. 人们需要一个新的基于区块链的具有图灵完备性、高效共识机制、支持更多应用场景的智能合约开发平台, 以太坊(<code>Ethereum</code>)应运而生.</p>
+<p>以太坊是运行在一个个计算机网络中的软件, 它确保数据以及被称为<strong>智能合约</strong>的小程序可以在没有中心协调者的情况下被所有网络中的计算机复制和处理. 以太坊的愿景是创建一个无法停止、抗审查和自我维持的去中心化世界计算机. 他眼神了比特币的区块链概念: 在全球范围的多个计算机上验证、储存和复制交易数据(分布式账本). 以太坊在这个概念上更进一步, 是在全球范围内的多个计算机上运行代码成为现实.</p>
+<p>以太坊的目的是对脚本、竞争币和链上元协议进行整合和提高, 使开发者能够创建任意的基于共识的、可扩展的、标准化的、图灵完备的、易于开发和协同的应用(即DApp)</p>
+<p>从架构角度而言, DApp非常类似于传统的Web应用. 在一个DApp中, 它的智能逻辑运行在区块链上, 客户端代码运行在特殊浏览器Mist里面. 因此, 以太坊技术同时分为平台(以太坊)、数字货币(以太币)和编程语言(Solidity或Ether Script)</p>
+<h1 id="references">References</h1>
+<p>1: [1] Lamport L ,  Shostak R ,  Pease M . The Byzantine Generals Problem[J]. ACM Transactions on Programming Languages and Systems, 1982, 4(3).</p>
+
+        </div>
+
+        
+          <a class="animated fadeInUp p-2 items-center text-sm text-gray-700 border hover:bg-gray-300 leading-none rounded-full flex lg:inline-flex m-4 " href="https://www.kainhao.site/tag/vhrbxjAfU/">
+            <span class="flex-auto">区块链</span>
+          </a>
+        
+          <a class="animated fadeInUp p-2 items-center text-sm text-gray-700 border hover:bg-gray-300 leading-none rounded-full flex lg:inline-flex m-4 " href="https://www.kainhao.site/tag/f_N4WaCcDw/">
+            <span class="flex-auto">科普</span>
+          </a>
+        
+
+
+        <div class="flex justify-between py-8">
+          
+            <div class="prev-post">
+              <a href="https://www.kainhao.site/the-art-of-questioning/">
+                <h3 class="post-title">
+                  <i class="ri-arrow-left-line"></i>
+                  提问的艺术
+                </h3>
+              </a>
+            </div>
+          
+
+          
+            <div class="next-post">
+              <a href="https://www.kainhao.site/hello-gridea/">
+                <h3 class="post-title">
+                  Hello Gridea
+                  <i class="ri-arrow-right-line"></i>
+                </h3>
+              </a>
+            </div>
+          
+        </div>
+
+        
+
+      </div>
+    </div>
+
+    <script src="https://www.kainhao.site/media/prism.js"></script>  
+<script>
+
+Prism.highlightAll()
+let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+// This should probably be throttled.
+// Especially because it triggers during smooth scrolling.
+// https://lodash.com/docs/4.17.10#throttle
+// You could do like...
+// window.addEventListener("scroll", () => {
+//    _.throttle(doThatStuff, 100);
+// });
+// Only not doing it here to keep this Pen dependency-free.
+
+window.addEventListener("scroll", event => {
+  let fromTop = window.scrollY;
+
+  mainNavLinks.forEach((link, index) => {
+    let section = document.getElementById(decodeURI(link.hash).substring(1));
+    let nextSection = null
+    if (mainNavLinks[index + 1]) {
+      nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+    }
+    if (section.offsetTop <= fromTop) {
+      if (nextSection) {
+        if (nextSection.offsetTop > fromTop) {
+          link.classList.add("current");
+        } else {
+          link.classList.remove("current");    
+        }
+      } else {
+        link.classList.add("current");
+      }
+    } else {
+      link.classList.remove("current");
+    }
+  });
+});
+
+
+document.addEventListener("DOMContentLoaded", function() {
+  var lazyImages = [].slice.call(document.querySelectorAll(".post-feature-image.lazy"));
+
+  if ("IntersectionObserver" in window) {
+    let lazyImageObserver = new IntersectionObserver(function(entries, observer) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          let lazyImage = entry.target
+          lazyImage.style.backgroundImage = `url(${lazyImage.dataset.bg})`
+          lazyImage.classList.remove("lazy")
+          lazyImageObserver.unobserve(lazyImage)
+        }
+      });
+    });
+
+    lazyImages.forEach(function(lazyImage) {
+      lazyImageObserver.observe(lazyImage)
+    })
+  } else {
+    // Possibly fall back to a more compatible method here
+  }
+});
+
+const menuContainer = document.querySelector('.menu-container')
+const menus = document.querySelectorAll('.menu-container .menu')
+const mask = document.querySelector('.mask')
+const contentWrapper = document.querySelector('.content-wrapper')
+const latestArticle = document.querySelector('.latest-article')
+const readMore = document.querySelector('.read-more')
+const indexPage = document.querySelector('.index-page')
+
+const isHome = location.pathname === '/'
+if (latestArticle) {
+  latestArticle.style.display = isHome ? 'block' : 'none'
+  readMore.style.display = isHome ? 'block' : 'none'
+  indexPage.style.display = isHome ? 'none' : 'block'
+}
+
+const openMenu = () => {
+  menuContainer.classList.add('open')
+  menus.forEach(menu => {
+    menu.classList.add('animated', 'fadeInLeft')
+  })
+  mask.classList.add('open')
+  contentWrapper.classList.add('is-second')
+}
+
+const closeMenu = () => {
+  menuContainer.classList.remove('open')
+  menus.forEach(menu => {
+    menu.classList.remove('animated', 'fadeInLeft')
+  })
+  mask.classList.remove('open')
+  contentWrapper.classList.remove('is-second')
+}
+</script>
+  
+  </body>
+</html>

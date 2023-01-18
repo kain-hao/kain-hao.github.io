@@ -1,0 +1,340 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>KainHao的蓼苇岛</title>
+<meta name="description" content="每一个不曾起舞的日子，都是对生命的辜负。" />
+<link rel="shortcut icon" href="https://www.kainhao.site/favicon.ico?v=1674012493822">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+
+<link rel="stylesheet" href="https://www.kainhao.site/styles/main.css">
+<!-- <script src="https://s2.pstatp.com/cdn/expire-1-M/valine/1.4.14/Valine.min.js"></script> -->
+
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main px-4 flex flex-col lg:flex-row">
+      <div id="sidebar" class="sidebar-wrapper lg:static lg:w-1/4">
+  <div class="lg:sticky top-0">
+    <div class="sidebar-content">
+      <div class="flex lg:block p-4 lg:px-0 items-center fixed lg:static lg:block top-0 right-0 left-0 bg-white z-50">
+        <i class="ri-menu-2-line lg:mt-4 text-2xl cursor-pointer animated fadeIn" onclick="openMenu()"></i>
+        <a href="https://www.kainhao.site">
+          <img class="animated fadeInLeft avatar rounded-lg mx-4 lg:mt-32 lg:mx-0 mt-0 lg:w-24 lg:h-24 w-12 w-12" src="https://www.kainhao.site/images/avatar.png?v=1674012493822" alt="">
+        </a>
+        <h1 class="animated fadeInLeft lg:text-4xl font-extrabold lg:mt-8 mt-0 text-xl" style="animation-delay: 0.2s">KainHao的蓼苇岛</h1>
+      </div>
+      
+        <div class="animated fadeInLeft" style="animation-delay: 0.4s">
+          <p class="my-4 text-gray-600 font-light hidden lg:block">
+            文章目录
+          </p>
+          <div class="toc-container hidden lg:block">
+            <ul class="markdownIt-TOC">
+<li><a href="#1-arpanet%E4%B8%8Encp-none-of-us-is-as-smart-as-all-of-us">.1 ARPAnet与NCP: &quot;None of us is as smart as all of us&quot;</a></li>
+<li><a href="#2-%E4%BB%8Etcpip%E5%88%B0%E4%BA%92%E8%81%94%E7%BD%91-%E8%BF%88%E5%90%91%E6%A0%87%E5%87%86%E5%8C%96%E4%B8%8E%E5%85%A8%E7%90%83%E5%8C%96">.2 从TCP/IP到互联网: 迈向标准化与全球化</a></li>
+<li><a href="#3-tcp%E4%B8%8Eosisup5sup-%E5%86%8D%E8%B0%88%E6%A0%87%E5%87%86%E5%8C%96">.3 TCP与OSI<sup>5</sup>: 再谈标准化</a></li>
+<li><a href="#4-tcpip%E5%8D%8F%E8%AE%AE%E7%B0%87sup6sup-%E4%BB%80%E4%B9%88-%E4%B8%8D%E6%AD%A2%E4%B8%A4%E4%B8%AA%E5%8D%8F%E8%AE%AE">.4 TCP/IP协议簇<sup>6</sup>: 什么? 不止两个协议?</a>
+<ul>
+<li><a href="#%E5%BA%94%E7%94%A8%E5%B1%82%E5%8D%8F%E8%AE%AE">应用层协议</a></li>
+<li><a href="#%E4%BC%A0%E8%BE%93%E5%B1%82%E5%8D%8F%E8%AE%AE">传输层协议</a></li>
+<li><a href="#%E4%BA%92%E8%81%94%E7%BD%91%E5%B1%82%E5%8D%8F%E8%AE%AE">互联网层协议</a></li>
+</ul>
+</li>
+<li><a href="#commentary">Commentary</a></li>
+<li><a href="#citations">Citations</a></li>
+</ul>
+
+          </div>
+        </div>
+      
+    </div>
+  </div>
+</div>
+
+<div class="menu-container">
+  <i class="ri-arrow-left-line text-2xl cursor-pointer animated fadeIn close-menu-btn" onclick="closeMenu()"></i>
+  <div>
+    
+      
+        <a href="/" class="menu" style="animation-delay: 0s">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu" style="animation-delay: 0.2s">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu" style="animation-delay: 0.4s">
+          标签
+        </a>
+      
+    
+      
+        <a href="/essayistic-gossip" class="menu" style="animation-delay: 0.6000000000000001s">
+          碎笔
+        </a>
+      
+    
+  </div>
+  <div class="site-footer">
+    <div class="py-4 text-gray-700">All content on this site is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0 </a> agreement. <br />
+Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a></div>
+    <a class="rss" href="https://www.kainhao.site/atom.xml" target="_blank">RSS</a>
+  </div>
+</div>
+<div class="mask" onclick="closeMenu()">
+</div>
+      <div class="content-wrapper py-32 lg:p-8 lg:w-3/4 post-detail animated fadeIn">
+        <h1 class="text-3xl font-bold lg:mt-16">简明TCP/IP(一): 网络协议巡礼</h1>
+        <div class="text-sm text-gray-700 lg:my-8">
+          2023-01-18 / 20 min read
+        </div>
+        
+        <div class="post-content yue">
+          <blockquote>
+<p>互联网成了人类发明的最强大的扩音器. 它给人微言轻无人理睬的小人物提供了可以向全球发言的话筒. 其用以鼓励和推动多种观点和对话的方法是传统的单向大众媒体所无法做到的.</p>
+</blockquote>
+<!-- more -->
+<blockquote>
+<p>--Vint Cerf, 2002.</p>
+</blockquote>
+<hr>
+<h1 id="1-arpanet与ncp-none-of-us-is-as-smart-as-all-of-us">.1 ARPAnet与NCP: &quot;None of us is as smart as all of us&quot;</h1>
+<blockquote>
+<p>回想起来, 人类历史上最大、最复杂的通讯工具的诞生之路本可以顺畅一些的. 遗憾的是, 无论是计划的指导者或是参与者都没有意识到他们所做的事业日后将会如何影响整个人类社会.</p>
+</blockquote>
+<p>在可操作计算机(Operational Computers)发明约15年后, 随着计算机的不断发展, 人们开始考虑将它应用到数字计算以外的地方.(Licklider, 1960) 最先提出这项设想的利克莱德(J.C.R. Licklider)教授很快得到了实现他梦想的机会——1962年, 他被任命为美国国防部高级研究计划署(ARPA)信息处理办公室(IPTO)主任, 随着他的研究不断深入, 人们认识到一个能够将计算机互相连接的网络能够提供远超越单个系统能力的服务. 他还说服了他的继任者泰勒(R.W. Taylor)继续这方面的研究.</p>
+<p>由于当时一台终端机只能链接一台主机, 如果要使用不同的主机, 除了安装多台终端机别无他法. 随着ARPA资助的计算机项目不断增加, 泰勒的办公室大有被终端机湮没之势. 泰勒对此不厌其烦, 后来他回忆说:</p>
+<blockquote>
+<p>我想, 唔, 要怎么做实在是显而易见. 如果这里有三台终端机, 它们应该被合并成一台, 想链接哪里就接哪里.</p>
+</blockquote>
+<p>泰勒认识到, 凭借一台终端机使用远在四面八方的计算机主机还能极大便利研究人员之间的沟通. 20世纪60年代, 随着多用户计算机系统的问世, 人们马上就开始利用它彼此发送信息. 泰勒在《纽约时报》的采访中说:</p>
+<blockquote>
+<p>我对这场演变印象最深的是这三个系统如何导致了围绕他们的社团的形成. 过去素不相识的人现在使用同一个系统. 因为这个系统可以让你分享文件, 你就能发现某某人对某某题目感兴趣, 而且掌握一些相关的信息. 你可以给他发个电子邮件, 一下子就建立了新关系.</p>
+</blockquote>
+<p>然而当时的电子邮件系统只能允许在同一主机系统内收发邮件, 一台主机上的用户无法给另一台主机上的人发送消息. 为了解决这一难题<sup>1</sup>, 泰勒提出了一个实验, 试图使一个站点的用户能够远程访问另一个站点中的计算机.(Licklider, J.C.R., and R.W. Taylor. 1968.) 这一实验性的电脑网络被称作&quot;ARPAnet&quot;.</p>
+<p>泰勒等人为ARPAnet设计了一套详尽的计划, 并大胆地采用了分组交换(Packet Switching)这一在当时并不成熟的构想. 分组交换是指将数据分为若干个数据包(Packet), 在计算机之间不断转发从而到达目的地. 这样一来, 一台计算机就可以经由几个&quot;中转站&quot;同远处的另一台电脑交流而无需直接连接, 从而大大减少了所需要搭建的线路. 此外, 数据包还能随时选取不同的拓扑路径进行传输, 以响应网络拥塞和链路故障等.</p>
+<p>设计者们最初的想法是借由已建成的全国性交换电话网络, 即公共交换电话网(Public Switched Telephone Network, PSTN)来实现多台主机的互联, 然而当时的大多数语音工程师都对这一理论持怀疑态度, 贝尔实验室(The Bell Labs)的一些工程师甚至直言&quot;分组交换注定失败&quot;. 因此尽管ARPAnet使用电话线作为通信介质, 但却没能使用PSTN的交换基础设施.</p>
+<p>在1967年第一次计算机协会(ACM)操作系统原理研讨会上, 当时的IPTO项目经理劳伦斯·罗伯茨(Lawrence Roberts)提出了后来成为ARPAnet的分组交换网络的初始设计(Davies et al., 1967)并很快展开了招标工作. 最终博尔特·贝纳尼克-纽曼公司(Bolt Beranek and Newman, BBN)公司被选中制造一种特殊的接口盒, 称作接口信息处理机(Interface Message Processor, IMP). 到1969年, BBN公司制造出了四个碗柜大小的IMP, 其中的两个很快被安装在加利福尼亚大学洛杉矶分校的克莱因洛克网络度量中心(Leonard Kleinrock's Network Measurement Center, University of California, Los Angeles, UCLA LKNMC)和斯坦福研究所(Stanford Research Institute, SRI), 使用一台搭载了NLS(Online System)的计算机作为主机.</p>
+<p><img src="https://s-bj-2262-blog.oss.dogecdn.com/6294436826_b1f120d37b_b.jpg" alt="ARPAnet使用的其中一台IMP Source: By FastLizard 4, CC-BY-SA 2.0" loading="lazy"><br>
+<em>ARPAnet使用的其中一台IMP. Source: By FastLizard 4, CC BY-SA 2.0</em></p>
+<p><img src="https://s-bj-2262-blog.oss.dogecdn.com/The_SDS_Sigma-7.jpg" alt="UCLA在参与ARPAnet实验时使用的SDS Sigma-7计算机. Source: By FastLizard 4, CC-BY-SA 2.0" loading="lazy"><br>
+<em>UCLA在参与ARPAnet实验时使用的SDS Sigma-7计算机. Source: By FastLizard 4, CC BY-SA 2.0</em></p>
+<p>1969年10月29日, UCLA开始了通过ARPAnet远程连接SRI主机的实验. &quot;我们本该发个精彩难忘的消息.&quot;, 多年后, 克莱因洛克回忆道. 遗憾的是, 人类历史上第一条通过计算机网络发送的消息实在太普通了: log in(登录). 当日晚10:30分, UCLA的终端机成功在SRI的主机上登录, IMP达到了要求, ARPAnet就此建立.</p>
+<p><img src="https://s-bj-2262-blog.oss.dogecdn.com/The_IMP_Log.jpg" alt="UCLA IMP的工作记录, 图中展示的是ARPAnet上第一条消息的发送过程. Source: FastLizard4, CC-BY-SA 2.0" loading="lazy"><br>
+<em>UCLA IMP的工作记录, 图中展示的是ARPAnet上第一条消息的发送过程. Source: FastLizard4, CC BY-SA 2.0</em></p>
+<p>很快, 另外两台IMP被安装在了加州大学圣塔芭芭拉分校(University of California at Santa Barbara, UCSB)和犹他大学(University of Utah). 分组交换的优越性从此时就开始体现: UCLA和犹他大学的IMP并不直接连通, 但是从这两处发出的数据包仍然可以经由SRI或UCSB到达对方.</p>
+<p>为了标准化ARPAnet上的网络接口, 网络工作小组(Network Working Group, NWG)开始开发一种对称<sup>2</sup>的网络协议, 也就是后来的网络控制协议(Network Control Protocol, NCP). NCP于1970年正式投入使用, 并一直作为ARPAnet的标准执行到1983年. RFC这一行之有效的机制也随之出现, 直到现在仍在发挥重要作用.</p>
+<p>很快, ARPAnet上出现了诸如FTP和跨主机电子邮件(值得一提的是, 广为人知的<em>用户名@主机名</em>语法就是这时出现的)等应用. 从而为后来分组交换网络的蓬勃发展的出现奠定了基础. 到1975年ARPAnet宣布实验结束开始投入正式运行时, 已经有57台IMP被安装在各处, 其中一台甚至跨越大洋被安装在伦敦.</p>
+<h1 id="2-从tcpip到互联网-迈向标准化与全球化">.2 从TCP/IP到互联网: 迈向标准化与全球化</h1>
+<p>ARPAnet令人瞩目的成就使得各方开始正视分组交换结构的计算机网络. 1980年底时, 各个大学和公司等已经建立了超过80个分组交换网络. 每个网络都对应着一个活跃的社群, 讨论的内容从当地的餐馆到最新的科研成果无所不包. 然而有一点阻碍了这些网络的发展: 各个网络之间是异构的, 也就是说, 各个网络的基础设施、协议乃至通信介质和错误特性都不尽相同. 这也就使得各个网络之间难以相互连通.</p>
+<p>两名曾参加过ARPAnet实验的研究员——罗伯特·卡恩(Robert E. Kahn)和文特·瑟夫(Vint Surf)——早就预见了这种障碍. 早在1972年, 他们就认识到我们现在所说的&quot;开放架构原则(Open-architecture Principal)&quot;, 即任何单独的网络技术的选择都不是由特定的网络体系结构决定的, 而是可以由服务提供商自由选择, 并通过元级&quot;互联网体系结构&quot;与其他网络进行交互. 在这种思想的指导下, 他们开始开发一种旨在连通多个网络的协议, 也就是TCP/IP协议<sup>3</sup>. 读者可能会注意到, 上文的说法是&quot;连通多个网络&quot;, 这意味着与其说TCP/IP协议是对于各方网络的构建标准, 不如说它更像是一种沟通各方的工具.<sup>4</sup><br>
+这一原则在卡恩早期的论文中也有体现:&quot;每个不同的网络都必须独立存在, 任何网络都不需要在连接到互联网时进行任何内部更改.&quot;</p>
+<p>随着80年代局域网技术的突破和网络-操作系统的整合, ARPAnet和TCP/IP协议都做出了大量的调整(这一变化还直接催生了下文中提到的DNS、IGP/EGP等技术), 为日后全球互联网的建立做了大量的准备工作.</p>
+<p><img src="https://s-bj-2262-blog.oss.dogecdn.com/2041103802_8d57ac82ee_b.jpg" alt="Xerox Alto, 最早的几款个人计算机之一, 也是首款适配TCP/IP的个人计算机. Source: cmnit, CC BY-SA 2.0" loading="lazy"><br>
+<em>Xerox Alto, 最早的几款个人计算机之一, 也是首款适配TCP/IP并搭载以太网接口的个人计算机. Source: cmnit, CC BY-SA 2.0</em></p>
+<p>分组交换网络在几个大学中的应用让同行们眼馋不已. 在1975年之后, 各类高等学术网络就如雨后春笋般出现, 例如为磁聚变能研究人员建立的MFENet、高能物理学家的HEPNet, NASA的SPANet和更通用的CSNET等.</p>
+<p>显然, 这些网络都是为专门的学术领域而设计的. 这一情况直到1985年NSFNet明确宣布他们的网络是为服务整个高等学术界而生的才得以扭转. NSFNet借此获得了爆炸性的发展. 同年, 丹尼斯·詹宁斯(Dennis Jennings)接手了NSFNet项目, 并迅速做出了一个关键的决定: TCP/IP协议将成为NSFNet项目的强制性要求. 不久, 联邦机构又作出了多项改革NSFNet的决定, 其中要求NFSNet加大对非学术用户的基础设施的投资力度并鼓励竞争性骨干网线路的架设和使用. 这些政策使得NFS骨干网从一个实验性的路由设备转变为商业设施. 在它8年半的生命周期中，骨干网从6个56kbps链路的节点发展到21个45mbps链路的节点. 它见证了超过5万个网络节点的接入(其中约2.9万个在美国), 位置涵盖七大洲和外太空. 由于NSFNet项目的影响力和资金以及协议本身的优越性，到1990年ARPAnet最终退役时，TCP/IP协议已经取代或边缘化了全球大多数其他广域计算机网络协议, IP正在成为全球信息基础设施的承载服务.</p>
+<p><img src="https://s-bj-2262-blog.oss.dogecdn.com/NSFNET-backbone-T3_Update.png" alt="1992年的NFSNet 骨干网示意图. Source: Mikeanthony1965, CC BY-SA 4.0" loading="lazy"><br>
+<em>1992年的NFSNet 骨干网示意图. Source: Mikeanthony1965, CC BY-SA 4.0</em></p>
+<p>到90年代, 互联网逐渐被引入公司企业和一般家庭, 网络服务商随之出现. 同时, 基于互联网技术的新型应用不断涌现. 如今互联网已经成为事实上连通全世界的公共网络, TCP/IP也成为最为广泛应用的网络协议.</p>
+<h1 id="3-tcp与osisup5sup-再谈标准化">.3 TCP与OSI<sup>5</sup>: 再谈标准化</h1>
+<p>计算机网络刚兴起时, 通常只有采用同一家制造商生产的设备才能彼此通信. 例如, 同一家公司要么采用DECnet解决方案, 要么采用IBM解决方案, 而不能结合使用这两种方案. 70年代末, 为打破这种藩篱, 国际标准化组织(International Organization for Standardization, ISO)开发了开放系统互连(Open System Interconnection, OSI)协议群及其参考模型. 出于种种原因, OSI协议群未能广泛使用, 但其参考模型却作为网络设计原则的范例广为人知. 这种模型旨在以协议的形式指导厂商生产可互操作的网络设备和软件, 让不同厂商的网络能够协同工作.</p>
+<p><img src="https://s-bj-2262-blog.oss.dogecdn.com/Osi-model.png" alt="OSI参考模型. Translation: KainHao, Source: Dino.Korah, CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=5538589" loading="lazy"><br>
+<em>OSI参考模型结构示意. Source: Dino.Korah, Translation: KainHao, CC BY-SA 3.0.</em></p>
+<p>这样看来, OSI与TCP/IP的目的似乎是相似的. 然而使得TCP/IP没有重蹈OSI覆辙的决定性因素在于:</p>
+<p>第一, TCP/IP的标准化是开放的. 通常TCP/IP的标准是由互联网工程任务组(The Internet Engineering Task Force, IETF)讨论制定并最终成为RFC. 与ISO不同, IETF是一个开放性的民间组织, 这意味着任何人都可以参与讨论并提出自己的想法, 这些想法可以草案的形式被工作组认领开发, 经领导小组批准后就能成为正式的RFC文档. 因此TCP/IP在过去几十年中能够一直保持活跃的开发.</p>
+<p>第二, TCP/IP的标准化是实用的. 工程小组在基本完善了草案之后, 就会在多个设备上实现该草案并验证, 经过多轮实验和研讨, 才能确定最终的规范.</p>
+<p>反观OSI,  其选取的协议并不具有很强的可操作性, 一旦要做出更改还必须经过冗长的辩论和审批, 因此, TCP/IP代替OSI完成了标准化互联网的任务也就不足为奇了.</p>
+<h1 id="4-tcpip协议簇sup6sup-什么-不止两个协议">.4 TCP/IP协议簇<sup>6</sup>: 什么? 不止两个协议?</h1>
+<p>TCP/IP的名字很容易让人误以为这是两个协议的组合, 实际上, 当我们使用TCP/IP这个名词的时候, 我们所指的实际上是基于TCP和IP开发出的多种协议所组成的协议簇(Protocol Suite).</p>
+<p><img src="https://s-bj-2262-blog.oss.dogecdn.com/3507231936_8fb2c9d657.png" alt="TCP/IP参考模型与OSI模型. Source: KainHao, CC BY-NC-SA 4.0" loading="lazy"><br>
+<em>TCP/IP参考模型与OSI模型. Source: KainHao, CC BY-SA 4.0</em></p>
+<p><img src="https://s-bj-2262-blog.oss.dogecdn.com/protocol_suite.png" alt="TCP/IP协议簇 Source: KainHao, CC BY-SA 4.0" loading="lazy"><br>
+<em>TCP/IP协议簇 Source: KainHao, CC BY-SA 4.0</em></p>
+<p>从上图可以看出, TCP/IP协议簇中包含不同层的多个协议, 因此有时也将TCP/IP协议簇称为TCP/IP栈(Protocol Stack).</p>
+<h2 id="应用层协议">应用层协议</h2>
+<p>TCP/IP开发中贯穿始终的一个观点是, TCP/IP不依赖上层应用程序也不应直接参与上层的运行. 因此, 为了实现具体的应用, 人们基于TCP/IP协议开发了多种不同的应用层协议.<br>
+例如远程登录使用的TELNET协议, 用来进行文件传输的FTP<sup>7</sup>和收发电子邮件所使用的SMTP等.</p>
+<h2 id="传输层协议">传输层协议</h2>
+<p>传输层协议主要包括TCP和UDP两种. 如果要用词语来概括这两种协议的话, 最适合的词可能是&quot;可靠&quot;和&quot;高效&quot;. 这两个词清楚的体现了TCP和UDP在设计初衷上的差异:</p>
+<p>TCP是一种追求最可靠地传输数据的协议. 为了实现这一目标, TCP甚至不惜占用额外的计算和网络资源来确保数据进行完整的流式传输. 在发送数据前, TCP会在两个主机之间建立一个连接<sup>8</sup>, 确认连接可用后, TCP才会发送数据. 在发送过程中每发送若干个数据包, 接收端主机就会返回一个已收到消息的通知, 这样即使存在丢包或数据损坏等, 发送端也可以及时发现问题从而在传输过程中纠正.</p>
+<p>与TCP对整个数据传输过程进行控制不同, UDP是一种不进行控制的无连接协议. 也就是说, UDP在发送数据时不需要确认接收端的可用性, 甚至不需要确认接收端是否存在, 它仅负责进行数据发送. 即使出现丢包、数据损坏等现象, UDP也不会进行重新发送.</p>
+<p>从开发的角度, 集成了流量控制、传输确认等功能的TCP显然比UDP更易用, 但是也正是因为拥有多种控制机制, 在出现错误时TCP的排错要比UDP更为复杂. UDP更像是一种简单的工具, 虽然设计上层协议时需要考虑更多的可能性, 但是一旦确定就可以基本不受协议机制的控制传输数据, 完全按照既有的思路运行.</p>
+<h2 id="互联网层协议">互联网层协议</h2>
+<p>不难看出互联网层协议是整个TCP/IP栈的基础, 一切数据最终要交由互联网层协议来处理<sup>9</sup>. 不幸的是, 在互联网层上运行的最重要的设备是路由器, 整个互联网的核心设备, 这就注定了互联网层协议的晦涩和复杂.</p>
+<p>互联网层协议最重要的任务是进行路由控制, 也就是为数据包进行路径规划, 确保数据包能够到达目标主机.</p>
+<hr>
+<h1 id="commentary">Commentary</h1>
+<p>1: 严格来讲, ARPAnet的提出和实践很大程度上还要归功于美国防部的推动. 事实上, 分组交换最初的提出是为了保证在核战争中即使一部分网络基础设施被摧毁其余部分仍能正常运行.<br>
+2: 指端与端之间对称的协议, 即主机-主机协议.<br>
+3: 卡恩和瑟夫等人早期曾经设想将TCP/IP作为一个协议处理, 然而在开发过程中出现的问题使他们不得不重新审视早期的想法并将IP从TCP协议中拆分出来作为独立的协议存在.<br>
+4: 这样的说法在现在看来或许有些奇怪, 因为TCP/IP已经成为了一种事实上必须遵守的规则, 在生活中其他网络协议正在变得愈发少见. 但是实际上, 在过去, 有许多不使用TCP/IP协议的网络只需对一台出口交换机做简单配置就能接入使用TCP/IP协议的互联网而不需变动其他设备.<br>
+5: 有关TCP/IP及OSI参考模型的有关内容将在后续章节中详细介绍.<br>
+6: 本节所提及的协议将在后续章节中详细介绍.<br>
+7: 事实上, FTP最早是基于NCP开发的, 文中所说的的FTP是指后续开发的基于TCP/IP的版本.<br>
+8: 连接是指一种虚拟的通信线路, 又叫虚电路. 这是说, 两台主机之间并没有物理线路连接, 但是在上层看来与两台主机之间直接连接是等效的.<br>
+9: 仅考虑TCP/IP参考模型的情况下.</p>
+<h1 id="citations">Citations</h1>
+<p>不是啥严谨的文章, 所以放一起乱序导出了, 有些地方的cite没有标在文章里, 请读者自己猜(</p>
+<p>Leiner, Barry M., Vinton G. Cerf, David D. Clark, Robert E. Kahn, Leonard Kleinrock, Daniel C. Lynch, Jon Postel, Larry G. Roberts, and Stephen Wolff. 1998. <em>A Brief History of the Internet</em>. Available online at <a href="http://www.isoc.org/internet/history/brief.html">http://www.isoc.org/internet/history/brief.html</a>, Version 3.1, February 20.</p>
+<p>National Academies of Sciences, Engineering, and Medicine. 1999. <em>Funding a Revolution: Government Support for Computing Research</em>. Washington, DC: The National Academies Press.</p>
+<p>Licklider, J.C.R. 1960. &quot;Man-Computer Symbiosis,&quot; <em>IRE Transactions on Human Factors in Electronics</em> 1(March):4-11.</p>
+<p>Licklider, J.C.R., and R.W. Taylor. 1968. &quot;The Computer as a Communications Device.&quot; <em>Science and Technology</em> 76(April):21-31.</p>
+<p>Licklider, J.C.R. 1988a. &quot;The Early Years,&quot; p. 226 in <em>Expert Systems and Artificial Intelligence: Applications and Management</em>, Thomas C. Bartee, ed. Howard W. Sams &amp; Co., Indianapolis, Ind.</p>
+<p>Licklider, J.C.R., and R.W. Taylor. 1968. &quot;The Computer as a Communications Device.&quot;* Science and Technology* 76(April):21-31.</p>
+<p>Davies, D.W., K.A. Bartlett, R.A. Scantlebury, and P. T. Wilkinson. 1967. &quot;A Digital Communication Network for Computers Giving Rapid Response at Remote Terminals,&quot; <em>Proceedings of the ACM Symposium on Operating System Principles. Association for Computing Machinery</em>, New York.</p>
+<p>Roberts, Lawrence G. 1967. &quot;Multiple Computer Networks and Intercomputer Communication,&quot; <em>Proceedings of the ACM Symposium on Operating System Principles. Association for Computing Machinery</em>, New York.</p>
+<p>J. Reynolds, J. Postel. 1987. &quot;The Request For Comments Reference Guide,&quot; <em>RFC1000</em>. Available online at: <a href="https://www.rfc-editor.org/rfc/rfc1000.txt">https://www.rfc-editor.org/rfc/rfc1000.txt</a></p>
+<p>T. Berners-Lee, R. Fielding,  H. Frystyk. 1996. &quot;Hypertext Transfer Protocol -- HTTP/1.0,&quot; <em>RFC1945</em>. Available online at: <a href="https://www.rfc-editor.org/rfc/rfc1945.txt">https://www.rfc-editor.org/rfc/rfc1945.txt</a></p>
+<p>R. Fielding, J. Gettys, J. Mogul, H. Frystyk, L. Masinter, P. Leach, T. Berners-Lee. 1999. &quot;Hypertext Transfer Protocol -- HTTP/1.1,&quot; <em>RFC2616</em> ,Available online at: <a href="https://www.rfc-editor.org/rfc/rfc2616.txt">https://www.rfc-editor.org/rfc/rfc2616.txt</a></p>
+<p>McClain, D. 1998. &quot;Voice Technology Appears Ready to Recognize Bottom Line,&quot; <em>New York Times</em>, January 19, pp. C1-C2.</p>
+<p>Akera, Atsushi. 1996. &quot;Computers and Systems Analysis: Transforming Research Strategies at the National Bureau of Standards,&quot; <em>Dibner Symposium on the Spread of the Systems Approach</em>. Dibner Institute for the History of Science and Technology, Cambridge, Mass., April.</p>
+
+        </div>
+
+        
+          <a class="animated fadeInUp p-2 items-center text-sm text-gray-700 border hover:bg-gray-300 leading-none rounded-full flex lg:inline-flex m-4 " href="https://www.kainhao.site/tag/zCZnVQ4ze/">
+            <span class="flex-auto">TCP/IP</span>
+          </a>
+        
+          <a class="animated fadeInUp p-2 items-center text-sm text-gray-700 border hover:bg-gray-300 leading-none rounded-full flex lg:inline-flex m-4 " href="https://www.kainhao.site/tag/fNKhbgMste/">
+            <span class="flex-auto">计算机网络</span>
+          </a>
+        
+          <a class="animated fadeInUp p-2 items-center text-sm text-gray-700 border hover:bg-gray-300 leading-none rounded-full flex lg:inline-flex m-4 " href="https://www.kainhao.site/tag/Ij1bX3XAy/">
+            <span class="flex-auto">蓼苇杂谈</span>
+          </a>
+        
+
+
+        <div class="flex justify-between py-8">
+          
+
+          
+            <div class="next-post">
+              <a href="https://www.kainhao.site/renaissance-science-i/">
+                <h3 class="post-title">
+                  Renaissance Science - I | 文艺复兴时期的科学(一)
+                  <i class="ri-arrow-right-line"></i>
+                </h3>
+              </a>
+            </div>
+          
+        </div>
+
+        
+
+      </div>
+    </div>
+
+    <script src="https://www.kainhao.site/media/prism.js"></script>  
+<script>
+
+Prism.highlightAll()
+let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+// This should probably be throttled.
+// Especially because it triggers during smooth scrolling.
+// https://lodash.com/docs/4.17.10#throttle
+// You could do like...
+// window.addEventListener("scroll", () => {
+//    _.throttle(doThatStuff, 100);
+// });
+// Only not doing it here to keep this Pen dependency-free.
+
+window.addEventListener("scroll", event => {
+  let fromTop = window.scrollY;
+
+  mainNavLinks.forEach((link, index) => {
+    let section = document.getElementById(decodeURI(link.hash).substring(1));
+    let nextSection = null
+    if (mainNavLinks[index + 1]) {
+      nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+    }
+    if (section.offsetTop <= fromTop) {
+      if (nextSection) {
+        if (nextSection.offsetTop > fromTop) {
+          link.classList.add("current");
+        } else {
+          link.classList.remove("current");    
+        }
+      } else {
+        link.classList.add("current");
+      }
+    } else {
+      link.classList.remove("current");
+    }
+  });
+});
+
+
+document.addEventListener("DOMContentLoaded", function() {
+  var lazyImages = [].slice.call(document.querySelectorAll(".post-feature-image.lazy"));
+
+  if ("IntersectionObserver" in window) {
+    let lazyImageObserver = new IntersectionObserver(function(entries, observer) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          let lazyImage = entry.target
+          lazyImage.style.backgroundImage = `url(${lazyImage.dataset.bg})`
+          lazyImage.classList.remove("lazy")
+          lazyImageObserver.unobserve(lazyImage)
+        }
+      });
+    });
+
+    lazyImages.forEach(function(lazyImage) {
+      lazyImageObserver.observe(lazyImage)
+    })
+  } else {
+    // Possibly fall back to a more compatible method here
+  }
+});
+
+const menuContainer = document.querySelector('.menu-container')
+const menus = document.querySelectorAll('.menu-container .menu')
+const mask = document.querySelector('.mask')
+const contentWrapper = document.querySelector('.content-wrapper')
+const latestArticle = document.querySelector('.latest-article')
+const readMore = document.querySelector('.read-more')
+const indexPage = document.querySelector('.index-page')
+
+const isHome = location.pathname === '/'
+if (latestArticle) {
+  latestArticle.style.display = isHome ? 'block' : 'none'
+  readMore.style.display = isHome ? 'block' : 'none'
+  indexPage.style.display = isHome ? 'none' : 'block'
+}
+
+const openMenu = () => {
+  menuContainer.classList.add('open')
+  menus.forEach(menu => {
+    menu.classList.add('animated', 'fadeInLeft')
+  })
+  mask.classList.add('open')
+  contentWrapper.classList.add('is-second')
+}
+
+const closeMenu = () => {
+  menuContainer.classList.remove('open')
+  menus.forEach(menu => {
+    menu.classList.remove('animated', 'fadeInLeft')
+  })
+  mask.classList.remove('open')
+  contentWrapper.classList.remove('is-second')
+}
+</script>
+  
+  </body>
+</html>
